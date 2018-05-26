@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/themes/styles.css" type="text/css" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <title>Smart Attendance</title>
+    </head>
+	
+   <body>
+        <section id="body">
+                <div id="sidebar">
+                    <header>
+                        <img id="logo" src="img/logo.png">
+                        <h1 id="product"><a href="/">Smart</br>Attendance<br>System</a></h1>                       
+                    </header>
+        
+                    <nav id="mainnav">
+                        <ul>
+                            <li><a href="/home">Home</a></li>
+                            <li><a href="/class">Class</a></li>
+                            <li class="selected-item"><a href="/students">Students</a></li>
+                            <li><a href="/weblogout">Log out</a></li>
+                        </ul>
+                    </nav>  
+                </div>
+
+                <section id="content">
+                        <div class="listview">
+                            <div id="ul1">
+    
+                            </div>
+                            <div id="ul2">
+    
+                            </div>
+                        </div>
+                    
+                        <!-- <footer class="clear">
+                            <p>&copy; 2015 sitename. <a href="http://zypopwebtemplates.com/">Free CSS Templates</a> by ZyPOP</p>
+                        </footer> -->
+                    </section>
+                    <!-- <footer class="clear">
+                        <p>&copy; 2015 sitename. <a href="http://zypopwebtemplates.com/">Free CSS Templates</a> by ZyPOP</p>
+                    </footer> -->
+                </section>
+        </section>
+    <script src = "/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+        var teacher_ID = cookieParse("teacher_ID")
+        var name = cookieParse("name")
+
+        function cookieParse(name) {
+            var cookie = document.cookie
+            var arr = cookie.split("; ")
+            for (const i in arr) {
+                c = arr[i].split("=")
+                if (c[0]==name) {
+                    var value = c[1];
+                    return value;
+                }
+            }
+        }
+    </script>
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function() {
+            $.ajax({
+            url: '/getStudents',
+            type: 'POST',
+            dataType: 'html',
+            data: {
+                teacher_ID : cookieParse("teacher_ID")
+            }
+            }).done(function(data) {
+                data = JSON.parse(data)
+                var $ul1 = $("<ul></ul>"),
+                    $ul2 = $("<ul></ul>");
+                for (const i in data) {
+
+                    var $a = $("<a></a>")
+                        $li = $("<li></li>"),
+                        $img = $("<img src ='/img/students.png'>"),
+                        $h = $("<h5>"+data[i].name+"</h5>"),
+                        $p = $( "<p>MSSV: "+data[i].student_ID+"</p>")
+
+                    // $a.addClass("student")
+                    $a.attr("onclick","a("+data[i].student_ID+")")
+                    $li.append($img,$h,$p)
+                    $a.append($li)
+
+                    if (i%2 == 0) {
+                        $ul1.append($a)
+                    } else {
+                        $ul2.append($a)
+                    }
+                }
+                $("#ul1").append($ul1)
+                $("#ul2").append($ul2)
+                // $("#content").click(function() { 
+                //     var id = $(this).attr('id');
+                //     $("#content").empty()
+                // });
+            });
+            
+        });
+
+        function a() { 
+            $.ajax({
+            url: '/getStudents',
+            type: 'POST',
+            dataType: 'html',
+            data: {
+                teacher_ID : cookieParse("teacher_ID")
+            }
+            }).done(function(data) {
+                $("#content").empty()
+                for (let i = 0; i < data.length; i++) {
+                    var $p = $("<p></p>")
+                    $p.html = data[i]
+                    $("#content").append($p)
+                }
+            });
+        }
+    </script>
+   </body>
+</html>

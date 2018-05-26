@@ -1,0 +1,62 @@
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#calendar {
+  position: absolute;
+  margin: 0;
+  width:220px;
+  height:auto;
+  overflow: hidden;
+  background-color: #29323f;
+}
+
+#month{
+  display: table;
+  height: 50px;
+  width: 100%;
+  text-align: center;
+}
+
+#month span{
+  display: table-cell;
+  vertical-align: middle;
+  font: 20px Helvetica;
+  color: #ffffff;
+}
+
+ul {
+  font: 12px Helvetica;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  border-bottom: 2px;
+}
+
+ul#days{
+  font-weight: 500;
+  color: #919191;
+}
+
+li {
+  float: left;
+  display: block;
+  width: 14.2857%;
+  /* height: 100%; */
+  text-align: center;
+  list-style-type: none;
+}
+
+ul.week li:nth-child(n+1):nth-child(-n+7) {
+  font-weight: 900;
+  color: rgb(255, 255, 255);
+}
+
+ul.week:hover{
+  border-radius: 10px;
+  background-color: #1abc9c;
+  color: #ecf0f1;
+}

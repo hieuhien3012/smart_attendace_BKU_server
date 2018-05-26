@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link type="text/css" rel="stylesheet" href="/css/themes/calendar_green.css" />
+        <link rel="stylesheet" href="/css/themes/styles.css" type="text/css" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <title>Smart Attendance</title>
+    </head>
+	
+   <body>
+        <section id="body">
+                <div id="sidebar">
+                    <header>
+                        <img id="logo" src="img/logo.png">
+                        <h1 id="product"><a href="/">Smart</br>Attendance<br>System</a></h1>                        
+                    </header>
+        
+                    <nav id="mainnav">
+                        <ul>
+                            <li class="selected-item" id="home-button"><a href="/home">Home</a></li>
+                            <li><a href="/class" id="class-button">Class</a></li>
+                            <li><a href="/students" id="students-button">Students</a></li>
+                            <li><a href="/weblogout" id="logout-button">Log out</a></li>
+                        </ul>
+                    </nav>  
+                </div>
+
+                <section id="content">
+                    <iframe src="/iframe/schedule.html" height="600" width="94%" style="border:none;"></iframe>
+                    <!-- <article>
+                        <div class="calendar">
+                                <div style="float:left; width: 160px;">
+                                    <div id="nav"></div>
+                                </div>
+                                <div style="margin-left: 160px;">
+                                    <div id="dp"></div>
+                                </div>
+                        </div>
+                    </article> -->
+
+                    <!-- <footer class="clear">
+                        <p>&copy; 2015 sitename. <a href="http://zypopwebtemplates.com/">Free CSS Templates</a> by ZyPOP</p>
+                    </footer> -->
+                </section>
+        </section>
+    <script src = "/socket.io/socket.io.js"></script>
+    <script src="js/daypilot/daypilot-all.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var teacher_ID = cookieParse(document.cookie,"teacher_ID")
+        var name = cookieParse("name")
+        // var nav = new DayPilot.Navigator("nav");    //Calendar navigator
+        // var dp = new DayPilot.Calendar("dp");       //Calendar
+        // var socket = io();
+
+        // //Navigator settings
+        // nav.showMonths = 2;
+        // nav.skipMonths = 2;
+        // nav.selectMode = "Week";
+        // nav.init();
+
+        // //Calendar settings
+        // dp.viewType = "Week";
+        // dp.init();
+        // dp.theme = "calendar_green"
+        // dp.update();
+
+        // //Set onTimeRangeSelected to change Calendar
+        // nav.onTimeRangeSelected = function(args) {
+        //     dp.startDate = args.day;
+        //     dp.update();
+        //     // loadEvents();
+        // };
+
+        // var e = new DayPilot.Event({
+        // start: "2018-05-18T09:00:00",
+        // end: "2018-05-18T19:00:00",
+        // id: "5",
+        // text: "\nRoom: \n ddsadsadsad sa\n dsadsadsadsa"
+        // });
+        // dp.events.add(e);
+
+        // socket.emit('getRooms',teacher_ID)
+        // socket.emit('search',"1411247")
+
+        // socket.on('sendRooms',function (data) {
+        //     console.log(data);
+        // });
+
+        // socket.on('attendance',function (data) {
+        //     console.log(data)
+        //     dp.viewType = "Week";
+        //     dp.init();
+        //     var e = new DayPilot.Event(data);
+        //     dp.events.add(e);
+        // })
+
+        // function search() {
+        //     var student_ID = document.getElementById("student_ID").value;
+        //     socket.emit("search",student_ID);
+        // }
+
+        function cookieParse(name) {
+            var cookie = document.cookie
+            var arr = cookie.split("; ")
+            for (const i in arr) {
+                c = arr[i].split("=")
+                if (c[0]==name) {
+                    var value = c[1];
+                    return value;
+                }
+            }
+        }
+        // function openNav() {
+        //     var width = document.getElementById("mySidenav").style.width
+        //     var marginLeft = document.getElementById("main").style.marginLeft
+        //     switch (width) {
+        //         case "250px":
+        //             document.getElementById("mySidenav").style.width = "0";
+        //             document.getElementById("main").style.marginLeft= "0";
+        //             break;
+        //         default:
+        //             document.getElementById("mySidenav").style.width = "250px";
+        //             document.getElementById("main").style.marginLeft = "250px";
+        //             break;
+        //     };
+        // };
+    </script>
+
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function() {
+           
+        });
+     </script>
+   </body>
+</html>

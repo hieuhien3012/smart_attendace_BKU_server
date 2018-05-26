@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/themes/styles.css" type="text/css" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <title>Smart Attendance</title>
+    </head>
+	
+   <body>
+        <section id="body">
+                <div id="sidebar">
+                    <header>
+                        <img id="logo" src="img/logo.png">
+                        <h1 id="product"><a href="/">Smart</br>Attendance<br>System</a></h1>                        
+                    </header>
+        
+                    <nav id="mainnav">
+                        <ul>
+                            <li><a href="/home">Home</a></li>
+                            <li class="selected-item"><a href="/class">Class</a></li>
+                            <li><a href="/students">Students</a></li>
+                            <li><a href="/weblogout">Log out</a></li>
+                        </ul>
+                    </nav>  
+                </div>
+
+                <section id="content">
+                    <div class="listview">
+                        <div id="ul1">
+
+                        </div>
+                        <div id="ul2">
+
+                        </div>
+                    </div>
+                
+                    <!-- <footer class="clear">
+                        <p>&copy; 2015 sitename. <a href="http://zypopwebtemplates.com/">Free CSS Templates</a> by ZyPOP</p>
+                    </footer> -->
+                </section>
+        </section>
+    <script src = "/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+        var teacher_ID = cookieParse("teacher_ID")
+        var name = cookieParse("name")
+
+        function cookieParse(name) {
+            var cookie = document.cookie
+            var arr = cookie.split("; ")
+            for (const i in arr) {
+                c = arr[i].split("=")
+                if (c[0]==name) {
+                    var value = c[1];
+                    return value;
+                }
+            }
+        }
+    </script>
+    
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function() {
+            $.ajax({
+            url: '/getRooms',
+            type: 'POST',
+            dataType: 'html',
+            data: {
+                teacher_ID : cookieParse("teacher_ID")
+            }
+            }).done(function(data) {
+                data = JSON.parse(data)
+                var $ul1 = $("<ul></ul>"),
+                    $ul2 = $("<ul></ul>");
+                for (const i in data) {
+                    var $li = $("<li></li>"),
+                        $img = $("<img src ='/img/classroom.png'>"),
+                        $h = $("<h4>"+data[i].room_ID+"</h4>"),
+                        $p = $("<p>Major:"+data[i].minor+"\
+                                Minor: "+data[i].minor+ "</p>");
+                    $li.append($img,$h,$p)
+                    if (i%2 == 0) {
+                        $ul1.append($li)
+                    } else {
+                        $ul2.append($li)
+                    }
+                }
+                $("#ul1").append($ul1)
+                $("#ul2").append($ul2)
+            });
+        });
+     </script>
+   </body>
+</html>

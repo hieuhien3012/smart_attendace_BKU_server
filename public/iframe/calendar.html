@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="../css/calendar/style.css">   	
+	<title>Schedule Template | CodyHouse</title>
+</head>
+<body>
+<div class="calendar-view">
+        <div id="calendar" >
+            <div id="month"></div>
+            <ul id="days">
+                <li>Sun</li>
+                <li>Mon</li>
+                <li>Tue</li>
+                <li>Wed</li>
+                <li>Thur</li>
+                <li>Fri</li>
+                <li>Sat</li>
+            </ul>
+            <ul class="week">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+            </ul>
+            <ul class="week">
+                <li>8</li>
+                <li>9</li>
+                <li>10</li>
+                <li>11</li>
+                <li>12</li>
+                <li>13</li>
+                <li>14</li>
+            </ul>
+            <ul class="week">
+                <li>15</li>
+                <li>16</li>
+                <li>17</li>
+                <li>18</li>
+                <li>19</li>
+                <li>20</li>
+                <li>21</li>
+            </ul>
+            <ul class="week">
+                <li>22</li>
+                <li>23</li>
+                <li>24</li>
+                <li>25</li>
+                <li>26</li>
+                <li>27</li>
+                <li>28</li>
+            </ul>
+            <ul class="week">
+                <li>29</li>
+                <li>30</li>
+                <li>31</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+            </ul>
+            <ul class="week">
+                <li>29</li>
+                <li>30</li>
+                <li>31</li>
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+            </ul>
+        </div> 
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+<script>
+    var d = new Date();
+    appendCal(d);
+
+    var month = d.getMonth;
+
+    function appendCal(d) {
+        var $span = $("<span></span>"),
+            $ul = $("<ul></ul>"),
+            $li = $("<li></li>");
+
+            date = d.toDateString()
+            arr = date.split(" ")
+
+            $span.html(arr[1]+" "+arr[3]);
+            $("#month").append($span);
+
+            var m = d.getMonth()
+            if(m)
+            $ul.addClass("week")
+    }
+</script>
+</body>
+</html>
