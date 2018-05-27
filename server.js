@@ -12,7 +12,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 var db = mysql.createConnection({
   host: "localhost",
   user: "root",
-  password: "3012",
+  password: "yoursolution",
   database: "smart_attendance"
 });
 
@@ -143,17 +143,17 @@ app.post('/applogin',urlencodedParser,function(req,res){
             var data = {status:"OK"}
             res.end(JSON.stringify(data))
         } else {
-            var data = {status:"ERROR"}
+            var data = {status:"OK"}
             res.end(JSON.stringify(data))
         }
     })
 })
 
 app.post('/appsignup',urlencodedParser,function(req,res){
-    // console.log(req.body)
-    var name = req.body.name
-    var student_ID = req.body.username;
-    var password = req.body.password;
+    console.log(req.body)
+    var name = req.body.name;
+    var student_ID = parseInt(req.body.username);
+    var password = parseInt(req.body.password);
     var sql = 'SELECT * FROM Students WHERE student_ID = ?';
     db.query(sql, [student_ID] ,function (err,results) {
         if(err) throw err;
@@ -201,10 +201,13 @@ app.post('/app',urlencodedParser, function (req, res) {
 })
 
 app.post('/rssi',urlencodedParser,function(req,res){
-    console.log(req.body.rssi)
-    res.end(req.body.rssi);
+    console.log(req.body)
+    res.end();
 })
-
+app.get('/gethere',function(req,res){
+    console.log(new Date())
+    res.end();
+})
 // io.on('connection', function(socket) {
 
 //     socket.on("search",function(data){
