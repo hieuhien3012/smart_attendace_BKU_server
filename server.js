@@ -56,7 +56,6 @@ app.get('/weblogout', function (req, res) {
     .clearCookie("remember")
     .sendFile( __dirname + "/html/" + "login.html" );
     userCookies[req.cookies.teacher_ID] = null;
-    console.log(userCookies)
 })
 
 app.get('/home', function (req, res) {
@@ -106,6 +105,7 @@ app.post('/getRooms',urlencodedParser,function (req,res) {
             for (var i = 0; i < results.length; i++) {
                 array.push(results[i]);
             }
+            console.log(array)
             res.end(JSON.stringify(array))
         })
 })
