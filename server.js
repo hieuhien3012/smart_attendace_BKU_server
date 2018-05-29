@@ -71,6 +71,7 @@ app.get('/home', function (req, res) {
 })
 
 app.get('/class', function (req, res) {
+    console.log(req.cookies)
     var teacher_ID = req.cookies.teacher_ID
     if (teacher_ID != null) {
         res.sendFile( __dirname + "/html/" + "class.html" );
@@ -83,6 +84,7 @@ app.get('/class', function (req, res) {
 })
 
 app.get('/students', function (req, res) {
+    console.log(req.cookies)
     var teacher_ID = req.cookies.teacher_ID
     if (teacher_ID != null) {
         res.sendFile( __dirname + "/html/" + "students.html" );
