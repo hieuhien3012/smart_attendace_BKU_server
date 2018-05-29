@@ -133,7 +133,6 @@ app.get('/attendance/*',urlencodedParser,function(req,res){
 
 
 app.post('/applogin',urlencodedParser,function(req,res){
-    // console.log(req.body)
     var student_ID = req.body.username;
     var password = req.body.password;
     var sql = 'SELECT * FROM Students WHERE student_ID = ? AND password = ?';
@@ -143,7 +142,7 @@ app.post('/applogin',urlencodedParser,function(req,res){
             var data = {status:"OK"}
             res.end(JSON.stringify(data))
         } else {
-            var data = {status:"OK"}
+            var data = {status:"ERROR"}
             res.end(JSON.stringify(data))
         }
     })
@@ -160,7 +159,7 @@ app.post('/appsignup',urlencodedParser,function(req,res){
         if (results[0] == null ) {
             var data = {status:"OK"}
             var sql = 'INSERT INTO Students (name,student_ID,password) VALUES ?'
-            db.query(sql,[name,student_ID,password],function(err,results){
+            db.query(sql,[[[name,student_ID,password]]],function(err,results){
                 if (err) throw err
             })
             res.end(JSON.stringify(data))
@@ -172,7 +171,7 @@ app.post('/appsignup',urlencodedParser,function(req,res){
 })
 
 app.post('/app',urlencodedParser, function (req, res) {
-    console.log(req.body)
+    console.log(new Date(),req.body.student_ID)
     var data = req.body
     var date = new Date()
     var time = date.getTime()
@@ -181,6 +180,7 @@ app.post('/app',urlencodedParser, function (req, res) {
     var minor = parseInt(data.minor)
     var rssi = parseInt(data.rssi)
     var accuracy = parseInt(data.accuracy)
+    var resTime = timeFormat(time).split('T')[1]
 
     var a = [
         [ time, student_ID , major, minor, rssi, accuracy]
@@ -190,7 +190,10 @@ app.post('/app',urlencodedParser, function (req, res) {
     db.query(sql,[data.major,data.minor],function(err,results){
         if (err) throw err;
         if (results[0] != null){
-            res.end(JSON.stringify({ room: results[0].room_ID }))
+            res.end(JSON.stringify({
+		time: resTime,
+		room: results[0].room_ID
+	    }))
             sql = "INSERT INTO Attendance (time,student_ID,major,minor,rssi,accuracy) VALUES ?"
             db.query(sql,[a],
             function(err,results){
@@ -281,17 +284,17 @@ function timeFormat(t){
     var year = ret.getFullYear();
     year = year.toString();
     var month = ret.getMonth()+1;
-    month = month.toString();
+    month =  month < 10 ? '0'+ month: month.toString();
     var date = ret.getDate();
-    date = date.toString();
+    date =  date < 10 ? '0'+ date: date.toString();
     var hours = ret.getHours();
-    hours = hours.toString();
+    hours =  hours < 10 ? '0'+ hours: hours.toString();
     var minutes = ret.getMinutes();
-    minutes = minutes.toString();
+    minutes =  minutes < 10 ? '0'+ minutes: minutes.toString();
     var seconds = ret.getSeconds();
-    seconds = seconds.toString();
+    seconds =  seconds < 10 ? '0'+ seconds: seconds.toString();
 
-    ret = year+"-"+month.padStart(2,0)+"-"+date.padStart(2,0)+"T"+hours.padStart(2,0)+":"+minutes.padStart(2,0)+":"+seconds.padStart(2,0);
+    ret = year+"-"+month+"-"+date+"T"+hours+":"+minutes+":"+seconds;
     return ret;
 }
 
