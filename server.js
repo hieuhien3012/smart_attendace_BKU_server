@@ -56,6 +56,7 @@ app.get('/weblogout', function (req, res) {
     .clearCookie("remember")
     .sendFile( __dirname + "/html/" + "login.html" );
     userCookies[req.cookies.teacher_ID] = null;
+    console.log(userCookies)
 })
 
 app.get('/home', function (req, res) {
@@ -267,6 +268,7 @@ app.get('/gethere',function(req,res){
 
 http.listen(8800, function() {
     console.log('listening on *:8800');
+    console.log('cookies: ',userCookies)
 });
 
 function dateCompare(t,s) {
