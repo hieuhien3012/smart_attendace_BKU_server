@@ -2,7 +2,6 @@
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link type="text/css" rel="stylesheet" href="/css/themes/calendar_green.css" />
         <link rel="stylesheet" href="/css/themes/styles.css" type="text/css" />
         <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
         <title>Smart Attendance</title>
@@ -10,6 +9,12 @@
 	
    <body>
         <section id="body">
+                <div id="topbar">
+                    <a class="selected-item" href="/home">Home</a>
+                    <a href="/class">Class</a>
+                    <a href="/students">Students</a>
+                    <a href="/weblogout" style="float:right">Log out</a>
+                </div>
                 <div id="sidebar">
                     <header>
                         <img id="logo" src="img/logo.png">
@@ -27,7 +32,7 @@
                 </div>
 
                 <section id="content">
-                    <iframe src="/iframe/schedule.html" height="600" width="94%" style="border:none;"></iframe>
+                    <iframe src="/iframe/schedule.html" height="600" width="100%" style="border:none"></iframe>
                     <!-- <article>
                         <div class="calendar">
                                 <div style="float:left; width: 160px;">
