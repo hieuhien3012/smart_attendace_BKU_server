@@ -97,7 +97,7 @@ app.get('/students', function (req, res) {
 })
 
 app.post('/getRooms',urlencodedParser,function (req,res) {
-    // console.log(req.body.teacher_ID)
+    console.log(req.body.teacher_ID)
     var cmd = "SELECT room_ID,major,minor FROM Rooms WHERE teacher_ID = "+req.body.teacher_ID
         db.query(cmd,function(err,results){
             if (err) throw err;
