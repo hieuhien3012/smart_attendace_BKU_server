@@ -420,7 +420,7 @@ div.listview li:hover {
 		margin-left: 0px;
 		margin-top: 49px;
 		height: calc(100% - 50px);
-		position: fixed;
+		position: static;
 	}
 
 
