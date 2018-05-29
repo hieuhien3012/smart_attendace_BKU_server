@@ -412,11 +412,11 @@ div.listview li:hover {
 	}
 
 	section#content {
-		padding: 20px;
+		padding: 0 20px 20px 20px;
 		float: none;
 		background-color: #fff;
 		display: block;
-		width: 1000px;
+		width: 100%;
 		margin-left: 0px;
 		margin-top: 49px;
 		height: calc(100% - 50px);
