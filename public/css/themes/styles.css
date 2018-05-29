@@ -176,7 +176,8 @@ header h2 {
 /** body **/
 div#body {
 	background: #fff;
-	width: 97%
+	width: 97%;
+	display:block;
 }
 
 
@@ -186,7 +187,7 @@ div#content {
 	float: left;
 	background-color: #fff;
 	display: block;
-	width: calc(100% - 200px);
+	/* width: calc(100% - 200px); */
 	margin-left: 200px;
 	min-height: 650px;
 }
@@ -416,7 +417,7 @@ div.listview li:hover {
 		float: none;
 		background-color: #fff;
 		display: block;
-		width: 100%;
+		/* width: 100%; */
 		margin-left: 0px;
 		margin-top: 49px;
 		height: calc(100% - 50px);
