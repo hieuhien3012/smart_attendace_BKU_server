@@ -413,14 +413,14 @@ div.listview li:hover {
 	}
 
 	div#content {
-		padding: 0 20px 0 20px;
+		padding: 0 20px 20px 0px;
 		float: none;
 		background-color: #fff;
 		display: block;
 		width: 500px;
 		margin-left: 0px;
 		margin-top: 49px;
-		height: 600px;
+		height: 100%;
 		position: static;
 	}
 
