@@ -174,14 +174,14 @@ header h2 {
 
 
 /** body **/
-section#body {
+div#body {
 	background: #fff;
 	width: 97%
 }
 
 
 /** content+sidebar styles **/
-section#content {
+div#content {
 	padding:20px;
 	float: left;
 	background-color: #fff;
@@ -411,7 +411,7 @@ div.listview li:hover {
 		text-align:center; 
 	}
 
-	section#content {
+	div#content {
 		padding: 0 20px 0 20px;
 		float: none;
 		background-color: #fff;
