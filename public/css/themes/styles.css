@@ -416,7 +416,7 @@ div.listview li:hover {
 		float: none;
 		background-color: #fff;
 		display: block;
-		width: auto;
+		width: 1000px;
 		margin-left: 0px;
 		margin-top: 49px;
 		height: calc(100% - 50px);
