@@ -155,7 +155,7 @@ app.post('/appsignup',urlencodedParser,function(req,res){
     console.log(req.body)
     var name = req.body.name;
     var student_ID = parseInt(req.body.username);
-    var password = parseInt(req.body.password);
+    var password = req.body.password;
     var sql = 'SELECT * FROM Students WHERE student_ID = ?';
     db.query(sql, [student_ID] ,function (err,results) {
         if(err) throw err;
