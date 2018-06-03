@@ -89,7 +89,7 @@
                         $p = $( "<p>MSSV: "+data[i].student_ID+"</p>")
 
                     // $a.addClass("student")
-                    $a.attr("onclick","a("+data[i].student_ID+")")
+                    $a.attr("onclick","attendance("+data[i].student_ID+")")
                     $li.append($img,$h,$p)
                     $a.append($li)
 
@@ -109,18 +109,20 @@
             
         });
 
-        function a() { 
+        function attendance(student_ID) { 
             $.ajax({
-            url: '/getStudents',
+            url: 'attendance',
             type: 'POST',
             dataType: 'html',
             data: {
-                teacher_ID : cookieParse("teacher_ID")
+                student_ID : student_ID
             }
             }).done(function(data) {
                 $("#content").empty()
+                console.log(data)
                 for (let i = 0; i < data.length; i++) {
                     var $p = $("<p></p>")
+                    console.log(data[i])
                     $p.html = data[i]
                     $("#content").append($p)
                 }

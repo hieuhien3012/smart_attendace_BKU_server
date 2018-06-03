@@ -127,10 +127,10 @@ app.post('/getStudents',urlencodedParser,function (req,res) {
         });
 })
 
-app.get('/attendance/*',urlencodedParser,function(req,res){
-    var url = req.url;
-    var student_ID = url.split("/")[2]
-    res.sendFile(__dirname + "/html/attendance.html")
+app.post('/attendance/*',urlencodedParser,function(req,res){
+    var student_ID = req.body.student_ID;
+    res.cookie("student_ID",student_ID)
+    .end(student_ID)
 })
 
 
