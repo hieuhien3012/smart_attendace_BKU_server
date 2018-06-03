@@ -54,6 +54,7 @@ app.get('/weblogout', function (req, res) {
     res.clearCookie("teacher_ID")
     .clearCookie("name")
     .clearCookie("remember")
+    .clearCookie("student_ID")
     .sendFile( __dirname + "/html/" + "login.html" );
     userCookies[req.cookies.teacher_ID] = null;
 })
@@ -130,7 +131,7 @@ app.post('/getStudents',urlencodedParser,function (req,res) {
 app.post('/attendance',urlencodedParser,function(req,res){
     var student_ID = req.body.student_ID;
     res.cookie("student_ID",student_ID)
-    .end(student_ID)
+    .end()
 })
 
 
