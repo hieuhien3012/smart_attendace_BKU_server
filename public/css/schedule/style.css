@@ -120,6 +120,7 @@ Main Components
   width: 100%;
   padding: 0 5%;
   top: 0;
+  align-content: center;
 }
 
 .cd-schedule .events .top-info > span {
@@ -128,6 +129,7 @@ Main Components
   margin-bottom: 10px;
   font-weight: bold;
   position: fixed;
+  align-content: center
 
 }
 
