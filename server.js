@@ -89,8 +89,8 @@ app.get('/students', function (req, res) {
 
 app.get('/attendance',urlencodedParser,function(req,res){
     // var student_ID = req.body.student_ID;
-    res.cookie("student_ID",student_ID)
-    .sendFile( __dirname + "/html/" + "attendance.html" );
+    // res.cookie("student_ID",student_ID)
+    res.sendFile( __dirname + "/html/" + "attendance.html" );
 })
 
 app.get('/weblogout', function (req, res) {
