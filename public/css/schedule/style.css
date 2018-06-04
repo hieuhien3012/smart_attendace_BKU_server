@@ -127,7 +127,7 @@ Main Components
   line-height: 1.2;
   margin-bottom: 10px;
   font-weight: bold;
-  position: absolute;
+  position: fixed;
 }
 
 .cd-schedule .events .events-group > ul {
