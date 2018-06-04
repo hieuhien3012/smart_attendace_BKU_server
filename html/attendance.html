@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/themes/styles.css" type="text/css" />
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <!-- <link rel="stylesheet" href="/css/schedule/reset.css">  -->
+        <link rel="stylesheet" href="/css/schedule/style.css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
+        <title>Smart Attendance</title>
+    </head>
+	
+   <body>
+        <div id="body">
+            <div id="topbar">
+                <a href="/home">Home</a>
+                <a href="/class">Class</a>
+                <a class="selected-item" href="/students">Students</a>
+                <a href="/weblogout" style="float:right">Log out</a>
+            </div>
+
+            <div id="sidebar">
+                <header>
+                    <img id="logo" src="img/logo.png">
+                    <h1 id="product"><a href="/">Smart</br>Attendance<br>System</a></h1>                       
+                </header>
+    
+                <nav id="mainnav">
+                    <ul>
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/class">Class</a></li>
+                        <li class="selected-item"><a href="/students">Students</a></li>
+                        <li><a href="/weblogout">Log out</a></li>
+                    </ul>
+                </nav>  
+            </div>
+
+            <div id="content">
+                    <div class="student-info">
+                        
+                    </div>
+
+                    <div class="schedule">
+                            <div class="cd-schedule loading">
+
+                                <div class="timeline">
+                                    <ul><li><span>00:00</span></li>
+                                        <li><span>00:30</span></li>
+                                        <li><span>01:00</span></li>
+                                        <li><span>01:30</span></li>
+                                        <li><span>02:00</span></li>
+                                        <li><span>02:30</span></li>
+                                        <li><span>03:00</span></li>
+                                        <li><span>03:30</span></li>
+                                        <li><span>04:00</span></li>
+                                        <li><span>04:30</span></li>
+                                        <li><span>05:00</span></li>
+                                        <li><span>05:30</span></li>
+                                        <li><span>06:00</span></li>
+                                        <li><span>06:30</span></li>
+                                        <li><span>07:00</span></li>
+                                        <li><span>07:30</span></li>
+                                        <li><span>08:00</span></li>
+                                        <li><span>08:30</span></li>
+                                        <li><span>09:00</span></li>
+                                        <li><span>09:30</span></li>
+                                        <li><span>10:00</span></li>
+                                        <li><span>10:30</span></li>
+                                        <li><span>11:00</span></li>
+                                        <li><span>11:30</span></li>
+                                        <li><span>12:00</span></li>
+                                        <li><span>12:30</span></li>
+                                        <li><span>13:00</span></li>
+                                        <li><span>13:30</span></li>
+                                        <li><span>14:00</span></li>
+                                        <li><span>14:30</span></li>
+                                        <li><span>15:00</span></li>
+                                        <li><span>15:30</span></li>
+                                        <li><span>16:00</span></li>
+                                        <li><span>16:30</span></li>
+                                        <li><span>17:00</span></li>
+                                        <li><span>17:30</span></li>
+                                        <li><span>18:00</span></li>
+                                        <li><span>18:30</span></li>
+                                        <li><span>19:00</span></li>
+                                        <li><span>19:30</span></li>
+                                        <li><span>20:00</span></li>
+                                        <li><span>20:30</span></li>
+                                        <li><span>21:00</span></li>
+                                        <li><span>21:30</span></li>
+                                        <li><span>22:00</span></li>
+                                        <li><span>22:30</span></li>
+                                        <li><span>23:00</span></li>
+                                        <li><span>23:30</span></li>
+                                        <li><span>24:00</span></li>
+                                    </ul>
+                                </div> <!-- .timeline -->
+                                
+                                <div class="events">
+                                    <ul>
+                                        <li class="events-group">
+                                            <div class="top-info"><span id="span0">Sunday</br></span></div>
+                                            <ul  id="ul0">
+                            
+                                            </ul>
+                                        </li>
+        
+                                        <li class="events-group">
+                                            <div class="top-info"><span id="span1">Monday</br></span></div>                  
+                                            <ul id="ul1">
+                                                <li class="single-event" data-start="09:12" data-end="11:27"  data-content="event-yoga-1" data-event="event-3">
+                                                    <a href="#0">
+                                                        <em class="event-name">1st floor</em>
+                                                    </a>
+                                                </li>
+                                                <li class="single-event" data-start="13:14" data-end="15:09"  data-content="event-yoga-1" data-event="event-3">
+                                                    <a href="#0">
+                                                        <em class="event-name">1st floor</em>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                            
+                                        <li class="events-group">
+                                            <div class="top-info"><span id="span2">Tuesday</br></span></div>
+                                            <ul id="ul2">
+                                                <li class="single-event" data-start="13:19" data-end="15:34"  data-content="event-yoga-1" data-event="event-3">
+                                                    <a href="#0">
+                                                        <em class="event-name">1st floor</em>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                            
+                                        <li class="events-group">
+                                            <div class="top-info"><span id="span3">Wednesday</br></span></div>
+                                            <ul id="ul3">
+                                                <li class="single-event" data-start="08:11" data-end="10:51"  data-content="event-rowing-workout" data-event="event-3">
+                                                    <a href="#0">
+                                                        <em class="event-name">1st floor</em>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                            
+                                        <li class="events-group">
+                                            <div class="top-info"><span id="span4">Thursday</br></span></div>
+                                            <ul id="ul4">
+                                                <li class="single-event" data-start="08:01" data-end="11:41"  data-content="event-yoga-1" data-event="event-3">
+                                                    <a href="#0">
+                                                        <em class="event-name">1st floor</em>
+                                                    </a>
+                                                </li>
+                                                <li class="single-event" data-start="11:46" data-end="12:41"  data-content="event-yoga-1" data-event="event-2">
+                                                    <a href="#0">
+                                                        <em class="event-name">2nd floor</em>
+                                                    </a>
+                                                </li>
+                                                <li class="single-event" data-start="13:15" data-end="17:25"  data-content="event-yoga-1" data-event="event-3">
+                                                    <a href="#0">
+                                                        <em class="event-name">1st floor</em>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                            
+                                        <li class="events-group">
+                                            <div class="top-info"><span id="span5">Friday</br></span></div>
+                                            <ul id="ul5">
+                                                <li class="single-event" data-start="10:50" data-end="12:30"  data-content="event-yoga-1" data-event="event-3">
+                                                    <a href="#0">
+                                                        <em class="event-name">1st floor</em>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        
+                                        <li class="events-group">
+                                            <div class="top-info"><span id="span6">Saturday</br></span></div>
+                                            <ul  id="ul6">
+                                                <li class="single-event" data-start="07:56" data-end="09:01"  data-content="event-yoga-1" data-event="event-3">
+                                                    <a href="#0">
+                                                        <em class="event-name">1st floor</em>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    
+                                    </ul>
+                                </div>
+                                
+                                <!-- <div class="event-modal">
+                                    <header class="header">
+                                        <div class="content">
+                                            <span class="event-date"></span>
+                                            <h3 class="event-name"></h3>
+                                        </div>
+                            
+                                        <div class="header-bg"></div>
+                                    </header>
+                            
+                                    <div class="body">
+                                        <div class="event-info"></div>
+                                        <div class="body-bg"></div>
+                                    </div>
+                            
+                                    <a href="#0" class="close">Close</a>
+                                </div> -->
+                                
+                                <div class="cover-layer"></div>
+                            </div> <!-- .cd-schedule -->
+                    </div>
+                    
+            </div>
+        </div>
+    <script src = "/socket.io/socket.io.js"></script>
+    <script type="text/javascript">
+        var teacher_ID = cookieParse("teacher_ID")
+        var name = cookieParse("name")
+
+        function cookieParse(name) {
+            var cookie = document.cookie
+            var arr = cookie.split("; ")
+            for (const i in arr) {
+                c = arr[i].split("=")
+                if (c[0]==name) {
+                    var value = c[1];
+                    return value;
+                }
+            }
+        }
+    </script>
+    <!-- <script type="text/javascript" language="javascript">
+        $(document).ready(function() {
+            var d = new Date();
+            var s = d-d.getMilliseconds()-(((d.getDay()*24+d.getHours())*60+d.getMinutes())*60+d.getSeconds())*1000
+            var e = d-d.getMilliseconds()-(((d.getHours()-((6-d.getDay())*24))*60+d.getMinutes())*60+d.getSeconds())*1000
+            d.getDay()
+            $.ajax({
+            url: '/getAttendance',
+            type: 'POST',
+            dataType: 'html',
+            data: {
+                student_ID  :   cookieParse("student_ID"),
+                start       :   s,
+                end         :   e
+            }
+            }).done(function(data) {
+                data = JSON.parse(data)
+                var $ul1 = $("<ul></ul>"),
+                    $ul2 = $("<ul></ul>");
+                for (const i in data) {
+
+                    var $a = $("<a></a>")
+                        $li = $("<li></li>"),
+                        $img = $("<img src ='/img/students.png'>"),
+                        $h = $("<h5>"+data[i].name+"</h5>"),
+                        $p = $( "<p>MSSV: "+data[i].student_ID+"</p>")
+
+                    // $a.addClass("student")
+                    $a.attr("onclick","attendance("+data[i].student_ID+")")
+                    $li.append($img,$h,$p)
+                    $a.append($li)
+
+                    if (i%2 == 0) {
+                        $ul1.append($a)
+                    } else {
+                        $ul2.append($a)
+                    }
+                }
+                $("#ul1").append($ul1)
+                $("#ul2").append($ul2)
+                // $("#content").click(function() { 
+                //     var id = $(this).attr('id');
+                //     $("#content").empty()
+                // });
+            });
+            
+        });
+
+        function attendance(student_ID) { 
+            $.ajax({
+            url: 'attendance',
+            type: 'POST',
+            dataType: 'html',
+            data: {
+                student_ID : student_ID
+            }
+            }).done(function(data) {
+                $("#content").empty()
+                console.log(data)
+                for (let i = 0; i < data.length; i++) {
+                    var $p = $("<p></p>")
+                    console.log(data[i])
+                    $p.html = data[i]
+                    $("#content").append($p)
+                }
+            });
+        }
+    </script> -->
+    <script src="/js/schedule/modernizr.js"></script>
+    <script src="/js/schedule/main.js"></script> <!-- Resource jQuery -->
+   </body>
+</html>
