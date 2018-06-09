@@ -30,7 +30,7 @@ app.get('/', function (req, res) {
     }
 })
 
-app.post('/weblogin',urlencodedParser,function(req,res){
+app.post('/webLogin',urlencodedParser,function(req,res){
     var teacher_ID = req.body.teacher_ID;
     var password = req.body.password;
     if (req.body.remember =="on" ) {
@@ -46,6 +46,20 @@ app.post('/weblogin',urlencodedParser,function(req,res){
 
         } else {
             res.sendFile( __dirname + "/html/" + "login.html" );
+        }
+    })
+})
+
+app.post('/webSignup',urlencodedParser,function(req,res){
+    var name = req.body.name,
+        teacher_ID = req.body.teacher_ID,
+        password = req.body.password;
+    var sql = 'SELECT * FROM Teachers WHERE teacher_ID = ?';
+    db.query(sql, [teacher_ID] ,function (err,results) {
+        if (results[0] != null ) {
+            res.end("OK")
+        } else {
+            res.end("ERROR");
         }
     })
 })
