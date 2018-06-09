@@ -43,7 +43,7 @@ a:hover {
   display: block;
   text-decoration: none;
   padding: 15px;
-  background: #2C5364;
+  background: #203A43;
   color: white;
   font-size: 20px;
   float: left;
@@ -57,7 +57,7 @@ a:hover {
   color: #ffffff;
 }
 .tab-group .active a {
-  background: #203A43;
+  background: #2C5364;
   color: #ffffff;
 }
 
