@@ -1,0 +1,21 @@
+*, *::after, *::before {
+    box-sizing: border-box;
+}
+
+body {
+	margin:0px auto;
+	padding:0;
+	background: rgb(99, 99, 99);
+	font-family: "Source Sans Pro","sans-serif";
+	font-size: 1.0em;
+	color:#666;
+}
+
+* {
+	margin:0;
+	padding:0;
+}
+
+a {
+	color:#6FAB4F;
+}

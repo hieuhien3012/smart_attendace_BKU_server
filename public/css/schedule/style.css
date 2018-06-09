@@ -3,13 +3,13 @@
 Primary style
 
 -------------------------------- */
-/* *, *::after, *::before {
+*, *::after, *::before {
   box-sizing: border-box;
-} */
+}
 
-/* html {
+html {
   font-size: 62.5%;
-} */
+}
 
 div.schedule {
   font-size: 1.6rem;
