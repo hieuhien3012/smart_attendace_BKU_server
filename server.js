@@ -33,6 +33,8 @@ app.get('/', function (req, res) {
 app.post('/webLogin',urlencodedParser,function(req,res){
     var teacher_ID = req.body.teacher_ID;
     var password = req.body.password;
+    var remember = req.body.remember;
+    console.log(req.body)
     if (req.body.remember =="on" ) {
         userCookies[teacher_ID] = makeid();
     }
