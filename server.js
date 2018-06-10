@@ -5,7 +5,6 @@ var mysql = require('mysql');
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 var cookieParser = require('cookie-parser')
-var userCookies = {}
 
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
@@ -20,12 +19,11 @@ app.use(express.static(__dirname + '/public'));
 app.use(cookieParser());
 
 app.get('/', function (req, res) {
-    if (req.cookies.remember == userCookies[req.cookies.teacher_ID]) {
+    if (req.cookies.teacher_ID != null) {
         res.sendFile( __dirname + "/html/" + "index.html" );
     } else {
         res.clearCookie("teacher_ID")
         .clearCookie("name")
-        .clearCookie("remember")
         .sendFile( __dirname + "/html/" + "login.html" );
     }
 })
@@ -33,17 +31,11 @@ app.get('/', function (req, res) {
 app.post('/webLogin',urlencodedParser,function(req,res){
     var teacher_ID = req.body.teacher_ID;
     var password = req.body.password;
-    var remember = req.body.remember;
-    console.log(req.body)
-    if (req.body.remember =="on" ) {
-        userCookies[teacher_ID] = makeid();
-    }
     var sql = 'SELECT * FROM Teachers WHERE teacher_ID = ? AND password = ?';
     db.query(sql, [ teacher_ID , password ] ,function (err,results) {
         if (results[0] != null ) {
             res.cookie("teacher_ID",teacher_ID)
             .cookie("name",results[0].name)
-            .cookie("remember",userCookies[teacher_ID])
             .sendFile( __dirname + "/html/" + "index.html" )
 
         } else {
@@ -73,7 +65,6 @@ app.get('/home', function (req, res) {
     } else {
         res.clearCookie("teacher_ID")
         .clearCookie("name")
-        .clearCookie("remember")
         .sendFile( __dirname + "/html/" + "login.html" );
     }
 })
@@ -86,7 +77,6 @@ app.get('/class', function (req, res) {
     } else {
         res.clearCookie("teacher_ID")
         .clearCookie("name")
-        .clearCookie("remember")
         .sendFile( __dirname + "/html/" + "login.html" );
     }
 })
@@ -98,7 +88,6 @@ app.get('/students', function (req, res) {
     } else {
         res.clearCookie("teacher_ID")
         .clearCookie("name")
-        .clearCookie("remember")
         .sendFile( __dirname + "/html/" + "login.html" );
     }
 })
@@ -112,10 +101,8 @@ app.get('/attendance',urlencodedParser,function(req,res){
 app.get('/weblogout', function (req, res) {
     res.clearCookie("teacher_ID")
     .clearCookie("name")
-    .clearCookie("remember")
     .clearCookie("student_ID")
     .sendFile( __dirname + "/html/" + "login.html" );
-    userCookies[req.cookies.teacher_ID] = null;
 })
 
 //GET THINGS
@@ -277,7 +264,6 @@ app.get('/gethere',function(req,res){
 
 http.listen(8800, function() {
     console.log('listening on *:8800');
-    console.log('cookies: ',userCookies)
 });
 
 function timeFormat(t){
@@ -292,20 +278,20 @@ function timeFormat(t){
     return ret;
 }
 
-function makeid() {
-    var text = "";
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+// function makeid() {
+//     var text = "";
+//     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
   
-    for (var i = 0; i < 5; i++){
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-        for (const key in userCookies) {
-            if (text == userCookies[key]) {
-                text = "";
-                i = 0;
-                break;
-            }
-        }
-    }
+//     for (var i = 0; i < 5; i++){
+//         text += possible.charAt(Math.floor(Math.random() * possible.length));
+//         for (const key in userCookies) {
+//             if (text == userCookies[key]) {
+//                 text = "";
+//                 i = 0;
+//                 break;
+//             }
+//         }
+//     }
     
-    return text;
-  }
+//     return text;
+//   }
