@@ -12,7 +12,7 @@ html {
 }
 
 div.schedule {
-  font-size: 2rem;
+  font-size: 1.6rem;
   font-family: "Source Sans Pro", sans-serif;
   color: #222222;
   background-color: white;
@@ -120,6 +120,7 @@ Main Components
   width: 100%;
   padding: 0 5%;
   top: 0;
+  position: fixed;
 }
 
 .cd-schedule .events .top-info > span {
@@ -127,8 +128,7 @@ Main Components
   line-height: 1.2;
   margin-bottom: 10px;
   font-weight: bold;
-  /* position: fixed; */
-  /* font-size: 15; */
+  font-size: 2.0rem;
 }
 
 .cd-schedule .events .events-group > ul {
