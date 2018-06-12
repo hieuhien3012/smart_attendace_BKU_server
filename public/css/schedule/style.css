@@ -8,7 +8,7 @@ Primary style
 }
 
 html {
-  font-size: 62.5%;
+  font-size: 100%;
 }
 
 div.schedule {
@@ -297,7 +297,7 @@ Main Components
 
 .cd-schedule .event-date {
   /* they are not included in the the HTML but added using JavScript */
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   opacity: .7;
   line-height: 1.2;
   margin-bottom: .2em;
