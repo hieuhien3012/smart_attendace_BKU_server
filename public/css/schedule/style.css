@@ -132,6 +132,7 @@ Main Components
   margin-bottom: 10px;
   font-weight: bold;
   font-size: 1.6rem;
+  color: white;
 }
 
 .cd-schedule .events .events-group > ul {
@@ -296,7 +297,7 @@ Main Components
 
 .cd-schedule .event-date {
   /* they are not included in the the HTML but added using JavScript */
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   opacity: .7;
   line-height: 1.2;
   margin-bottom: .2em;
