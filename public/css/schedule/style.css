@@ -121,7 +121,6 @@ Main Components
   padding: 0 5%;
   top: 0;
   background-color:#2C5364;
-  position: sticky;
 }
 
 .cd-schedule .events .top-info > span {
@@ -181,6 +180,9 @@ Main Components
   .cd-schedule .events .single-event {
     width: 40%;
   }
+  .cd-schedule .events .top-info {
+    position: sticky;
+  }
 }
 
 @media only screen and (min-width: 800px) {
@@ -205,7 +207,6 @@ Main Components
     border-bottom: 5px solid #EAEAEA;
     /* reset style */
     padding: 0;
-    position: relative;
   }
   .cd-schedule .events .top-info > span {
     /* vertically center inside its parent */
