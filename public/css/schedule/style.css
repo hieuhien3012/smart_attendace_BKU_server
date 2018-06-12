@@ -182,6 +182,7 @@ Main Components
   }
   .cd-schedule .events .top-info {
     position: sticky;
+    z-index: 4;
   }
 }
 
