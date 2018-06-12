@@ -8,11 +8,11 @@ Primary style
 }
 
 html {
-  font-size: 100%;
+  font-size: 62.5%;
 }
 
 div.schedule {
-  font-size: 1.6rem;
+  font-size: 2.2rem;
   font-family: "Source Sans Pro", sans-serif;
   color: #222222;
   background-color: white;
@@ -131,7 +131,6 @@ Main Components
   line-height: 1.2;
   margin-bottom: 10px;
   font-weight: bold;
-  font-size: 1.6rem;
   color: white;
 }
 
