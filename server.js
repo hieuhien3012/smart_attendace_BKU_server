@@ -223,6 +223,7 @@ app.post('/app',urlencodedParser, function (req, res) {
     var minor = parseInt(data.minor)
     var rssi = parseInt(data.rssi)
     var resTime = timeFormat(time).split('T')[1]
+    console.log(resTime)
 
     var a = [
         [ time, student_ID , major, minor, rssi]
@@ -236,7 +237,6 @@ app.post('/app',urlencodedParser, function (req, res) {
 		time: resTime,
 		room: results[0].room_ID
         }))
-        console.log(a)
             sql = "INSERT INTO Attendance (time,student_ID,major,minor,rssi) VALUES ?"
             db.query(sql,[a],
             function(err,results){
