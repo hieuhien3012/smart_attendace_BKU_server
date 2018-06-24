@@ -92,10 +92,6 @@ app.get('/students', function (req, res) {
     }
 })
 
-app.get('/attendance',urlencodedParser,function(req,res){
-    res.sendFile( __dirname + "/html/" + "attendance.html" );
-})
-
 app.get('/weblogout', function (req, res) {
     res.clearCookie("teacher_ID")
     .clearCookie("name")

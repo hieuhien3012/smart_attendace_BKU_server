@@ -60,7 +60,60 @@
             }
         }
     </script>
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function() {
+            var d = new Date();
+            var start = d-d.getMilliseconds()-(((d.getDay()*24+d.getHours())*60+d.getMinutes())*60+d.getSeconds())*1000
+            var end = d-d.getMilliseconds()-(((d.getHours()-((6-d.getDay())*24))*60+d.getMinutes())*60+d.getSeconds())*1000
+        });
 
+        function search(){
+            var date = document.getElementById("date").value
+            console.log(date)
+        }
+
+        function sendDate (s,e){
+            $.ajax({
+            url: '/getAttendance',
+            type: 'POST',
+            dataType: 'html',
+            data: {
+                student_ID  :   cookieParse("student_ID"),
+                start       :   s,
+                end         :   e
+            }
+            }).done(function(data) {
+                data = JSON.parse(data)
+                var $ul1 = $("<ul></ul>"),
+                    $ul2 = $("<ul></ul>");
+                for (const i in data) {
+
+                    var $a = $("<a></a>")
+                        $li = $("<li></li>"),
+                        $img = $("<img src ='/img/students.png'>"),
+                        $h = $("<h5>"+data[i].name+"</h5>"),
+                        $p = $( "<p>MSSV: "+data[i].student_ID+"</p>")
+
+                    // $a.addClass("student")
+                    $a.attr("onclick","attendance("+data[i].student_ID+")")
+                    $li.append($img,$h,$p)
+                    $a.append($li)
+
+                    if (i%2 == 0) {
+                        $ul1.append($a)
+                    } else {
+                        $ul2.append($a)
+                    }
+                }
+                $("#ul1").append($ul1)
+                $("#ul2").append($ul2)
+                // $("#content").click(function() { 
+                //     var id = $(this).attr('id');
+                //     $("#content").empty()
+                // });
+            });
+        }
+    </script>
     <script type="text/javascript" language="javascript">
         $(document).ready(function() {
            
