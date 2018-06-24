@@ -59,6 +59,11 @@ Main Components
   display: none;
 }
 
+.cd-schedule .timeline li > span {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size:1.6rem;
+}
+
 @media only screen and (min-width: 800px) {
   .cd-schedule .timeline {
     display: block;
@@ -322,6 +327,12 @@ Main Components
   .cd-schedule .event-name {
     font-size: 2rem;
   }
+}
+
+@media only screen and (max-width: 1000px) {
+  .top-info-date{
+  display:none;  
+}
 }
 
 .cd-schedule .event-date {
