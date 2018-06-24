@@ -329,11 +329,10 @@ Main Components
   }
 }
 
-@media only screen and (max-width: 1000px) {
-  .top-info-date{
+.top-info-date{
   display:none;  
 }
-}
+
 
 .cd-schedule .event-date {
   /* they are not included in the the HTML but added using JavScript */
