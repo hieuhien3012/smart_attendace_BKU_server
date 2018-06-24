@@ -34,21 +34,7 @@
                 <div id="content">
                     <h4>MSSV: 1411247</h4>
                     <h4>Ten: Tran Hieu Hien</h4>
-                    <iframe src="/iframe/schedule.html" height="600" width="100%" style="border:none"></iframe>
-                    <!-- <article>
-                        <div class="calendar">
-                                <div style="float:left; width: 160px;">
-                                    <div id="nav"></div>
-                                </div>
-                                <div style="margin-left: 160px;">
-                                    <div id="dp"></div>
-                                </div>
-                        </div>
-                    </article> -->
-
-                    <!-- <footer class="clear">
-                        <p>&copy; 2015 sitename. <a href="http://zypopwebtemplates.com/">Free CSS Templates</a> by ZyPOP</p>
-                    </footer> -->
+                    <iframe src="../public/iframe/schedule.html" height="600" width="100%" style="border:none"></iframe>
                 </div>
             </div>
     <script src = "/socket.io/socket.io.js"></script>
@@ -56,56 +42,6 @@
     <script type="text/javascript">
         var teacher_ID = cookieParse(document.cookie,"teacher_ID")
         var name = cookieParse("name")
-        // var nav = new DayPilot.Navigator("nav");    //Calendar navigator
-        // var dp = new DayPilot.Calendar("dp");       //Calendar
-        // var socket = io();
-
-        // //Navigator settings
-        // nav.showMonths = 2;
-        // nav.skipMonths = 2;
-        // nav.selectMode = "Week";
-        // nav.init();
-
-        // //Calendar settings
-        // dp.viewType = "Week";
-        // dp.init();
-        // dp.theme = "calendar_green"
-        // dp.update();
-
-        // //Set onTimeRangeSelected to change Calendar
-        // nav.onTimeRangeSelected = function(args) {
-        //     dp.startDate = args.day;
-        //     dp.update();
-        //     // loadEvents();
-        // };
-
-        // var e = new DayPilot.Event({
-        // start: "2018-05-18T09:00:00",
-        // end: "2018-05-18T19:00:00",
-        // id: "5",
-        // text: "\nRoom: \n ddsadsadsad sa\n dsadsadsadsa"
-        // });
-        // dp.events.add(e);
-
-        // socket.emit('getRooms',teacher_ID)
-        // socket.emit('search',"1411247")
-
-        // socket.on('sendRooms',function (data) {
-        //     console.log(data);
-        // });
-
-        // socket.on('attendance',function (data) {
-        //     console.log(data)
-        //     dp.viewType = "Week";
-        //     dp.init();
-        //     var e = new DayPilot.Event(data);
-        //     dp.events.add(e);
-        // })
-
-        // function search() {
-        //     var student_ID = document.getElementById("student_ID").value;
-        //     socket.emit("search",student_ID);
-        // }
 
         function cookieParse(name) {
             var cookie = document.cookie
@@ -118,20 +54,6 @@
                 }
             }
         }
-        // function openNav() {
-        //     var width = document.getElementById("mySidenav").style.width
-        //     var marginLeft = document.getElementById("main").style.marginLeft
-        //     switch (width) {
-        //         case "250px":
-        //             document.getElementById("mySidenav").style.width = "0";
-        //             document.getElementById("main").style.marginLeft= "0";
-        //             break;
-        //         default:
-        //             document.getElementById("mySidenav").style.width = "250px";
-        //             document.getElementById("main").style.marginLeft = "250px";
-        //             break;
-        //     };
-        // };
     </script>
 
     <script type="text/javascript" language="javascript">
