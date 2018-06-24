@@ -222,7 +222,7 @@ app.post('/app',urlencodedParser, function (req, res) {
     var major = parseInt(data.major)
     var minor = parseInt(data.minor)
     var rssi = parseInt(data.rssi)
-    var resTime = timeFormat(time).split('T')[1]
+    var resTime = timeFormat(time)
     console.log(resTime)
 
     var a = [
