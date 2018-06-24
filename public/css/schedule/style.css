@@ -55,9 +55,9 @@ Main Components
   }
 }
 
-.cd-schedule .timeline {
+/* .cd-schedule .timeline {
   display: none;
-}
+} */
 
 .cd-schedule .timeline li > span {
   font-family: "Source Sans Pro", sans-serif;
@@ -328,11 +328,6 @@ Main Components
     font-size: 2rem;
   }
 }
-
-.top-info-date{
-  display:none;  
-}
-
 
 .cd-schedule .event-date {
   /* they are not included in the the HTML but added using JavScript */
