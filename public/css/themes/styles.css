@@ -390,6 +390,33 @@ div.listview li:hover {
 	cursor: pointer;
 }
 
+.date-picker {
+	font-family: "Source Sans Pro", sans-serif;
+	font-size: 1.6rem;
+}
+
+.date-picker input#date {
+	font-family: "Source Sans Pro", sans-serif;
+	font-size: 1.6rem;
+}
+
+.date-picker button {
+	background-color: #2C5364;
+	border: none;
+	color: white;
+	padding: auto;
+	text-align: center;
+	margin: 4px 2px;
+	opacity: 1;
+	transition: 0.3s;
+	font-family: "Source Sans Pro", sans-serif;
+	font-size: 1.6rem;
+	}
+
+.date-picker button:hover {
+	opacity: 0.6
+}
+
 @media screen and (max-width: 900px) {
 
 	body { 
