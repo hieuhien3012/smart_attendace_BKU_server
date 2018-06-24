@@ -114,7 +114,7 @@ Main Components
   font-size: 1.6rem;
 }
 
-.date-picker button {
+.date-picker button:hover {
   opacity: 0.6
 }
 
