@@ -63,8 +63,6 @@
     <script type="text/javascript" language="javascript">
         $(document).ready(function() {
             var d = new Date();
-            var start = d-d.getMilliseconds()-(((d.getDay()*24+d.getHours())*60+d.getMinutes())*60+d.getSeconds())*1000
-            var end = d-d.getMilliseconds()-(((d.getHours()-((6-d.getDay())*24))*60+d.getMinutes())*60+d.getSeconds())*1000
         });
 
         function search(){
@@ -72,7 +70,9 @@
             console.log(date)
         }
 
-        function sendDate (s,e){
+        function sendDate (d){
+            var start = d-d.getMilliseconds()-(((d.getDay()*24+d.getHours())*60+d.getMinutes())*60+d.getSeconds())*1000
+            var end = d-d.getMilliseconds()-(((d.getHours()-((6-d.getDay())*24))*60+d.getMinutes())*60+d.getSeconds())*1000
             $.ajax({
             url: '/getAttendance',
             type: 'POST',
@@ -80,7 +80,8 @@
             data: {
                 student_ID  :   cookieParse("student_ID"),
                 start       :   s,
-                end         :   e
+                end         :   e,
+                select      :   d.getTime(),
             }
             }).done(function(data) {
                 data = JSON.parse(data)

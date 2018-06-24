@@ -236,7 +236,8 @@ app.post('/app',urlencodedParser, function (req, res) {
             res.end(JSON.stringify({
 		time: resTime,
 		room: results[0].room_ID
-	    }))
+        }))
+        console.log(a)
             sql = "INSERT INTO Attendance (time,student_ID,major,minor,rssi,accuracy) VALUES ?"
             db.query(sql,[a],
             function(err,results){
