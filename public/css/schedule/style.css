@@ -91,6 +91,11 @@ Main Components
   }
 }
 
+.date-picker input#date {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1.6rem;
+}
+
 @media only screen and (min-width: 1000px) {
   .cd-schedule .timeline li::after {
     width: calc(100% - 40px);
