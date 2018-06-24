@@ -222,11 +222,10 @@ app.post('/app',urlencodedParser, function (req, res) {
     var major = parseInt(data.major)
     var minor = parseInt(data.minor)
     var rssi = parseInt(data.rssi)
-    var accuracy = parseInt(data.accuracy)
     var resTime = timeFormat(time).split('T')[1]
 
     var a = [
-        [ time, student_ID , major, minor, rssi, accuracy]
+        [ time, student_ID , major, minor, rssi]
     ];
 
     var sql = "SELECT room_ID FROM Rooms WHERE major = ? AND minor = ?"
@@ -238,7 +237,7 @@ app.post('/app',urlencodedParser, function (req, res) {
 		room: results[0].room_ID
         }))
         console.log(a)
-            sql = "INSERT INTO Attendance (time,student_ID,major,minor,rssi,accuracy) VALUES ?"
+            sql = "INSERT INTO Attendance (time,student_ID,major,minor,rssi) VALUES ?"
             db.query(sql,[a],
             function(err,results){
                 if (err) throw err;
