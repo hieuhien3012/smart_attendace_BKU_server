@@ -27,12 +27,15 @@
                             <li><a href="/class" id="class-button">Class</a></li>
                             <li class="selected-item"><a href="/students" id="students-button">Students</a></li>
                             <li><a href="/weblogout" id="logout-button">Log out</a></li>
-                            <li><img src="img/BKUSmatt.png" style="float: left;"></li>
+                            <!-- <li><img src="img/BKUSmatt.png" style="float: left;"></li> -->
                         </ul>
                     </nav> 
                 </div>
 
                 <div id="content">
+                    <div class="std_info">
+
+                    </div>
                     <div class="date-picker">
                         Pick a date: 
                         <input id="date" type="date" name="date">
@@ -66,7 +69,11 @@
 
         function search(){
             var date = document.getElementById("date").value
-            console.log(date)
+            if (date != ""){
+                var split = date.split("-")
+                date = new Date(split[0],split[1],split[2])
+                console.log(date)
+            }    
         }
 
         function sendDate (d){
