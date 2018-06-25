@@ -71,7 +71,7 @@
             var date = document.getElementById("date").value
             if (date != ""){
                 var split = date.split("-")
-                date = new Date(split[0],split[1]-1,split[2])
+                date = new Date(split[0],parseInt(split[1])-1,split[2])
                 console.log(date)
             }    
         }
