@@ -93,7 +93,26 @@
                 data = JSON.parse(data)
                 console.log(data)
                 var iframe = document.getElementById('iframe');
-                var innerIframe = iframe.contentDocument;
+                iframe = iframe.contentDocument;
+                for (let i = 0; i < data.length; i++) {
+                    var day = data[i].day,
+                        start = data[i].start,
+                        end = data[i].end,
+                        room = data[i].room;
+                    var $li = $("<li></li>"),
+                        $a  = $("<a></a>"),
+                        $em = $("<em>"+room+"</em>"),
+                        $u  = iframe.getElementById("day"+day);
+                    $em.addClass("event-name");                    
+                    $a.attr("href","#0")
+                    .append($em);
+                    $li.addClass("single-event")
+                    .attr("data-start",start)
+                    .attr("data-end",end)
+                    .attr("data-event","event-1")
+                    .append($a)
+                    $u.append($li)
+                }
             });
         }
     </script>
