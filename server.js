@@ -146,7 +146,7 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
     db.query(sql,[student_ID,start,end],function(err,results){
         if (err) throw err;
         var array = [];
-        var date    = new Date(results[0].time),
+        var date    = new Date(parseInt(results[0].time)),
             day     = date.getDay(),
             start   = date.getTime(),
             end     = date.getTime(),
