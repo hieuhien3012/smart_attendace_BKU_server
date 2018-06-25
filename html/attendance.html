@@ -99,9 +99,9 @@
                         start = data[i].start,
                         end = data[i].end,
                         room = data[i].room;
-                    var $li = $("<li></li>"),
-                        $a  = $("<a></a>"),
-                        $em = $("<em>"+room+"</em>"),
+                    var $li = document.createElement("li"),
+                        $a  = document.createElement("a"),
+                        $em = document.createElement("em"),
                         $u  = iframe.getElementById("day"+day);
                     $em.addClass("event-name");  
                     console.log($em)                  
