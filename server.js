@@ -146,7 +146,6 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
     db.query(sql,[student_ID,start,end],function(err,results){
         if (err) throw err;
         var array = [];
-        console.log(results)
         var date    = new Date(results[0].time),
             day     = date.getDay(),
             start   = date.getTime(),
@@ -173,6 +172,7 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
                 end     = d.getTime() 
             }
         }
+        console.log(array)
         res.end(JSON.stringify(array))
     });
 })
