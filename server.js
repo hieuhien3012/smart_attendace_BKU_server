@@ -256,8 +256,8 @@ app.get('/gethere',function(req,res){
     res.end();
 })
 
-http.listen(80, function() {
-    console.log('listening on *:80');
+http.listen(8800, function() {
+    console.log('listening on *:8800');
 });
 
 function timeFormat(t){
