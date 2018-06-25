@@ -121,15 +121,15 @@
                     iframe = iframe.contentDocument,
                     head = iframe.getElementsByTagName('head')[0],
                     modernizr = iframe.createElement('script'),
+                    ajax = iframe.createElement('script'),
+                    jQuery = iframe.createElement('script'),
                     main = iframe.createElement('script');
                 modernizr.src = '/js/schedule/modernizr.js';
+                ajax.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js';
+                jQuery.
                 main.src = '/js/schedule/main.js';
                 head.appendChild(modernizr)
                 head.appendChild(main)
-                // $('script[src="/js/schedule/modernizr.js"]',$iframe).remove();
-                // $('<script>').attr('src', "/js/schedule/modernizr.js").appendTo('head',$iframe);
-                // $('script[src="/js/schedule/main.js"]',$iframe).remove();
-                // $('<script>').attr('src', "/js/schedule/main.js").appendTo('head',$iframe);
         }
     </script>
    </body>
