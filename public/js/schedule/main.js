@@ -64,6 +64,7 @@ jQuery(document).ready(function($){
 	SchedulePlan.prototype.placeEvents = function() {
 		var self = this;
 		this.singleEvents.each(function(){
+			console.log("thissssss")
 			//place each event in the grid -> need to set top position and height
 			var start = getScheduleTimestamp($(this).attr('data-start')),
 				duration = getScheduleTimestamp($(this).attr('data-end')) - start;
