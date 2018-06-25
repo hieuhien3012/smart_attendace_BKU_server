@@ -120,11 +120,10 @@
                 var iframe = document.getElementById('iframe'),
                     iframe = iframe.contentDocument,
                     body = iframe.getElementsByTagName('body')[0],
-                    // modernizr = iframe.createElement('script'),
-                    main = iframe.createElement('script');
-                // modernizr.src = '/js/schedule/modernizr.js';
+                    main = iframe.createElement('script'),
+                    src = iframe.getElementById('main');
+                src.removeChild();
                 main.src = '/js/schedule/main.js';
-                // body.appendChild(modernizr);
                 body.appendChild(main);
         }
     </script>
