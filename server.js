@@ -20,7 +20,7 @@ app.use(cookieParser());
 
 app.get('/', function (req, res) {
     if (req.cookies.teacher_ID != null) {
-        res.sendFile( __dirname + "/html/" + "index.html" );
+        res.sendFile( __dirname + "/html/" + "attendance.html" );
     } else {
         res.clearCookie("teacher_ID")
         .clearCookie("name")
@@ -32,11 +32,12 @@ app.post('/webLogin',urlencodedParser,function(req,res){
     var teacher_ID = req.body.teacher_ID;
     var password = req.body.password;
     var sql = 'SELECT * FROM Teachers WHERE teacher_ID = ? AND password = ?';
+    console.log(req.body)
     db.query(sql, [ teacher_ID , password ] ,function (err,results) {
         if (results[0] != null ) {
             res.cookie("teacher_ID",teacher_ID)
             .cookie("name",results[0].name)
-            .sendFile( __dirname + "/html/" + "index.html" )
+            .sendFile( __dirname + "/html/" + "attendance.html" )
 
         } else {
             res.sendFile( __dirname + "/html/" + "login.html" );
@@ -61,7 +62,7 @@ app.post('/webSignup',urlencodedParser,function(req,res){
 app.get('/home', function (req, res) {
     var teacher_ID = req.cookies.teacher_ID
     if (teacher_ID != null) {
-        res.sendFile( __dirname + "/html/" + "index.html" );
+        res.sendFile( __dirname + "/html/" + "attendance.html" );
     } else {
         res.clearCookie("teacher_ID")
         .clearCookie("name")
