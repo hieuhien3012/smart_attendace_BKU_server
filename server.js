@@ -135,7 +135,7 @@ app.post('/getStudents',urlencodedParser,function (req,res) {
 app.post('/getAttendance',urlencodedParser,function (req,res){
     var student_ID  =   parseInt(req.body.student_ID),
         start       =   parseInt(req.body.start),
-        end         =   parserInt(req.body.end);
+        end         =   parseInt(req.body.end);
     var sql = "SELECT a.time AS time, r.room_ID AS room \
     FROM Attendance AS a\
     JOIN Rooms AS r ON (a.major = r.major AND a.minor = r.minor)\
