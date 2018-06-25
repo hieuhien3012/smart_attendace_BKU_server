@@ -157,7 +157,7 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
                 r = results[i].room;
             console.log(d.getDay(),r,(d.getTime() - end) < 900000)
             if((d.getDay() == day) && (r == room) && ((d.getTime() - end) < 900000)){
-                end = results[i].time
+                end = parseInt(results[i].time)
             } else {
                 // console.log("false")
                 if (end - start > 1800000) {
