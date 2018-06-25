@@ -126,7 +126,11 @@
                     iframe = iframe.contentDocument,
                     body = iframe.getElementsByTagName('body')[0],
                     main = iframe.createElement('script'),
-                    src = iframe.getElementsByTagName('script')[3];
+                    src = iframe.getElementsByTagName('script')[3],
+                    singleEvent = iframe.getElementsByClassName("single-event")
+                for (let i = 0; i < singleEvent.length; i++) {
+                    singleEvent[i].remove()
+                }
                 body.removeChild(src)
                 main.src = '/js/schedule/main.js';
                 body.appendChild(main);
