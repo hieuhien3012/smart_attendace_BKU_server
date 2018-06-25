@@ -103,16 +103,13 @@
                         $a  = $("<a></a>"),
                         $em = $("<em>"+room+"</em>")
                     $em.addClass("event-name");  
-                    console.log($em)                  
                     $a.attr("href","#0");
                     $a.append($em);
-                    console.log($a)
-                    $li.addClass("single-event")
-                    .attr("data-start",start)
-                    .attr("data-end",end)
-                    .attr("data-event","event-1");
+                    $li.addClass("single-event");
+                    $li.attr("data-start",start);
+                    $li.attr("data-end",end);
+                    $li.attr("data-event","event-1");
                     $li.append($a);
-                    console.log($li)
                     $("#day"+day,$iframe).append($li)
                 }
             });
@@ -128,7 +125,7 @@
                 modernizr.src = '/js/schedule/modernizr.js';
                 main.src = '/js/schedule/main.js';
                 head.appendChild(modernizr)
-                .appendChild(main)
+                head.appendChild(main)
                 // $('script[src="/js/schedule/modernizr.js"]',$iframe).remove();
                 // $('<script>').attr('src', "/js/schedule/modernizr.js").appendTo('head',$iframe);
                 // $('script[src="/js/schedule/main.js"]',$iframe).remove();
