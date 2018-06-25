@@ -103,12 +103,12 @@
                         $a  = document.createElement("a"),
                         $em = document.createElement("em"),
                         $u  = iframe.getElementById("day"+day);
-                    $em.addClass("event-name");  
+                    $em.className("event-name");  
                     console.log($em)                  
                     $a.attr("href","#0");
                     $a.append($em);
                     console.log($a)
-                    $li.addClass("single-event")
+                    $li.className("single-event")
                     .attr("data-start",start)
                     .attr("data-end",end)
                     .attr("data-event","event-1");
