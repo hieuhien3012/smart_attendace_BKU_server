@@ -70,7 +70,7 @@ jQuery(document).ready(function($){
 
 			var eventTop = self.eventSlotHeight*(start - self.timelineStart)/self.timelineUnitDuration,
 				eventHeight = self.eventSlotHeight*duration/self.timelineUnitDuration;
-			console.log(self.eventSlotHeight,start,end)
+			console.log(self.eventSlotHeight,start,duration)
 			$(this).css({
 				top: (eventTop -1) +'px',
 				height: (eventHeight+1)+'px'
