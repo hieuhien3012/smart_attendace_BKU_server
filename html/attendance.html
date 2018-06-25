@@ -122,7 +122,7 @@
                     body = iframe.getElementsByTagName('body')[0],
                     main = iframe.createElement('script'),
                     src = iframe.getElementById('main');
-                src.removeChild();
+                body.removeChild(src)
                 main.src = '/js/schedule/main.js';
                 body.appendChild(main);
         }
