@@ -156,7 +156,9 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
                 r = results[i].room;
             if((d.getDay() == day) && (r == room) && ((d.getTime() - end) < 900000)){
                 end = results[i].time
+                console.log("true")
             } else {
+                console.log("false")
                 if (end - start > 1800000) {
                     var json = {
                         day     : day,
@@ -172,7 +174,6 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
                 end     = d.getTime() 
             }
         }
-        console.log(array)
         res.end(JSON.stringify(array))
     });
 })
