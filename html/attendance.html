@@ -93,6 +93,7 @@
                 data = JSON.parse(data)
                 var $iframe = $("#iframe");
                 $iframe = $iframe.contents();
+                $('li[class="single-event"]',$iframe).remove();
                 for (let i = 0; i < data.length; i++) {
                     var day = data[i].day,
                         start = data[i].start,
@@ -126,11 +127,7 @@
                     iframe = iframe.contentDocument,
                     body = iframe.getElementsByTagName('body')[0],
                     main = iframe.createElement('script'),
-                    src = iframe.getElementsByTagName('script')[3],
-                    singleEvent = iframe.getElementsByClassName("single-event")
-                for (let i = 0; i < singleEvent.length; i++) {
-                    singleEvent[i].remove()
-                }
+                    src = iframe.getElementsByTagName('script')[3];
                 body.removeChild(src)
                 main.src = '/js/schedule/main.js';
                 body.appendChild(main);
