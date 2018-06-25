@@ -119,13 +119,13 @@
         function reloadJS() {
                 var iframe = document.getElementById('iframe'),
                     iframe = iframe.contentDocument,
-                    body = iframe.getElementsByTagName('body')[0],
+                    head = iframe.getElementsByTagName('head')[0],
                     modernizr = iframe.createElement('script'),
                     main = iframe.createElement('script');
                 modernizr.src = '/js/schedule/modernizr.js';
                 main.src = '/js/schedule/main.js';
-                body.appendChild(modernizr)
-                body.appendChild(main)
+                head.appendChild(modernizr)
+                head.appendChild(main)
                 // $('script[src="/js/schedule/modernizr.js"]',$iframe).remove();
                 // $('<script>').attr('src', "/js/schedule/modernizr.js").appendTo('head',$iframe);
                 // $('script[src="/js/schedule/main.js"]',$iframe).remove();
