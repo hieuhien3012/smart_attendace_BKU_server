@@ -115,11 +115,24 @@
                     console.log($li)
                     $("#day"+day,$iframe).append($li)
                 }
-                $('script[src="/js/schedule/modernizr.js"]',$iframe).remove();
-                $('<script>').attr('src', "/js/schedule/modernizr.js").appendTo('head',$iframe);
-                $('script[src="/js/schedule/main.js"]',$iframe).remove();
-                $('<script>').attr('src', "/js/schedule/main.js").appendTo('head',$iframe);
             });
+            reloadJS()
+        }
+
+        function reloadJS() {
+                var iframe = document.getElementById('iframe'),
+                    iframe = iframe.contentDocument,
+                    head = iframe.getElementsByTagName('head')[0],
+                    modernizr = iframe.createElement('script'),
+                    main = iframe.createElement('script');
+                modernizr.src = '/js/schedule/modernizr.js';
+                main.src = '/js/schedule/main.js';
+                head.appendChild(modernizr)
+                .appendChild(main)
+                // $('script[src="/js/schedule/modernizr.js"]',$iframe).remove();
+                // $('<script>').attr('src', "/js/schedule/modernizr.js").appendTo('head',$iframe);
+                // $('script[src="/js/schedule/main.js"]',$iframe).remove();
+                // $('<script>').attr('src', "/js/schedule/main.js").appendTo('head',$iframe);
         }
     </script>
    </body>
