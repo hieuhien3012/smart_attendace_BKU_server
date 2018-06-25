@@ -91,7 +91,6 @@
             }
             }).done(function(data) {
                 data = JSON.parse(data)
-                console.log(data)
                 var $iframe = $("#iframe");
                 $iframe = $iframe.contents();
                 for (let i = 0; i < data.length; i++) {
@@ -121,10 +120,9 @@
                     iframe = iframe.contentDocument,
                     body = iframe.getElementsByTagName('body')[0],
                     main = iframe.createElement('script'),
-                    src = iframe.getElementById('main');
+                    src = iframe.getElementsByTagName('script')[3];
                 body.removeChild(src)
                 main.src = '/js/schedule/main.js';
-                main.attributes("id") = "main";
                 body.appendChild(main);
         }
     </script>
