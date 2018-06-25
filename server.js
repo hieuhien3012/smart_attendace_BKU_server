@@ -146,11 +146,12 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
     db.query(sql,[student_ID,start,end],function(err,results){
         if (err) throw err;
         var array = [];
+        console.log(results)
         var date    = new Date(results[0].time),
             day     = date.getDay(),
             start   = date.getTime(),
             end     = date.getTime(),
-            room    = results[i].room;
+            room    = results[0].room;
         for (var i = 1; i < results.length; i++) {
             var d = new Date(results[i].time),
                 r = results[i].room;
