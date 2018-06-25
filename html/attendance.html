@@ -115,13 +115,12 @@
                     console.log($li)
                     $("#day"+day,$iframe).append($li)
                 }
+                $('script[src="/js/schedule/modernizr.js"]',$iframe).remove();
+                $('<script>').attr('src', "/js/schedule/modernizr.js").appendTo('head',$iframe);
+                $('script[src="/js/schedule/main.js"]',$iframe).remove();
+                $('<script>').attr('src', "/js/schedule/main.js").appendTo('head',$iframe);
             });
         }
     </script>
-    <script type="text/javascript" language="javascript">
-        $(document).ready(function() {
-           
-        });
-     </script>
    </body>
 </html>
