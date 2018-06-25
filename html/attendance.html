@@ -74,8 +74,6 @@
                 date = new Date(split[0],parseInt(split[1])-1,split[2])
                 // sendDate(date)
             }
-            // var iframe = document.getElementById('iframe');
-            // var innerDoc = iframe.contentDocument
         }
 
         function sendDate (d){
@@ -93,7 +91,9 @@
             }
             }).done(function(data) {
                 data = JSON.parse(data)
-                
+                console.log(data)
+                var iframe = document.getElementById('iframe');
+                var innerIframe = iframe.contentDocument;
             });
         }
     </script>
