@@ -99,22 +99,22 @@
                         start = data[i].start,
                         end = data[i].end,
                         room = data[i].room;
-                    var $li = document.createElement("li"),
-                        $a  = document.createElement("a"),
-                        $em = document.createElement("em"),
-                        $u  = iframe.getElementById("day"+day);
-                    $em.className("event-name");  
+                    var li = document.createElement("li"),
+                        a  = document.createElement("a"),
+                        em = document.createElement("em"),
+                        u  = iframe.getElementById("day"+day);
+                    em.className("event-name");  
                     console.log($em)                  
-                    $a.attr("href","#0");
-                    $a.append($em);
+                    a.attr("href","#0");
+                    a.append($em);
                     console.log($a)
-                    $li.className("single-event")
+                    li.className("single-event")
                     .attr("data-start",start)
                     .attr("data-end",end)
                     .attr("data-event","event-1");
-                    $li.append($a);
-                    console.log($li)
-                    $u.append("dsadsafsadsa")
+                    li.append(a);
+                    console.log(li)
+                    u.append("dsadsafsadsa")
                 }
             });
         }
