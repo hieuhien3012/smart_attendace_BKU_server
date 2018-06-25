@@ -92,29 +92,28 @@
             }).done(function(data) {
                 data = JSON.parse(data)
                 console.log(data)
-                var iframe = document.getElementById('iframe');
-                iframe = iframe.contentDocument;
+                var $iframe = $("#iframe");
+                $iframe = $iframe.contents();
                 for (let i = 0; i < data.length; i++) {
                     var day = data[i].day,
                         start = data[i].start,
                         end = data[i].end,
                         room = data[i].room;
-                    var li = document.createElement("li"),
-                        a  = document.createElement("a"),
-                        em = document.createElement("em"),
-                        u  = iframe.getElementById("day"+day);
-                    em.attr("class","event-name");  
+                    var $li = $("<li></li>"),
+                        $a  = $("<a></a>"),
+                        $em = $("<em>"+room+"</em>")
+                    $em.addClass("event-name");  
                     console.log($em)                  
-                    a.attr("href","#0");
-                    a.append($em);
+                    $a.attr("href","#0");
+                    $a.append($em);
                     console.log($a)
-                    li.className("single-event")
+                    $li.addClass("single-event")
                     .attr("data-start",start)
                     .attr("data-end",end)
                     .attr("data-event","event-1");
-                    li.append(a);
-                    console.log(li)
-                    u.append("dsadsafsadsa")
+                    $li.append($a);
+                    console.log($li)
+                    $("#day"+day, iframe.contents()).append($li)
                 }
             });
         }
