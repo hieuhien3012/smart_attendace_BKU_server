@@ -101,8 +101,7 @@
                         room = data[i].room;
                     var $li = $("<li></li>"),
                         $a  = $("<a></a>"),
-                        $em = $("<em>"+room+"</em>"),
-                        $u  = iframe.getElementById("day"+day);
+                        $em = $("<em>"+room+"</em>");
                     $em.addClass("event-name");                    
                     $a.attr("href","#0")
                     .append($em);
@@ -111,8 +110,7 @@
                     .attr("data-end",end)
                     .attr("data-event","event-1")
                     .append($a);
-                    console.log($li.data)
-                    $u.append($li)
+                    $("#day"+day).append($li)
                 }
             });
         }
