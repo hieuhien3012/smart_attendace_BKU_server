@@ -120,15 +120,12 @@
                 var iframe = document.getElementById('iframe'),
                     iframe = iframe.contentDocument,
                     body = iframe.getElementsByTagName('body')[0],
-                    ajax = iframe.createElement('script'),
                     modernizr = iframe.createElement('script'),
                     main = iframe.createElement('script');
                 modernizr.src = '/js/schedule/modernizr.js';
-                ajax.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js';
                 main.src = '/js/schedule/main.js';
-                body.appendChild(ajax)
-                body.appendChild(modernizr)
-                body.appendChild(main)
+                body.appendChild(modernizr);
+                body.appendChild(main);
         }
     </script>
    </body>
