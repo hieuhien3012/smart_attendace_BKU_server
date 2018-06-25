@@ -112,24 +112,23 @@
                     $li.append($a);
                     $("#day"+day,$iframe).append($li)
                 }
-                // reloadJS()
+                reloadJS()
             });
         }
 
         function reloadJS() {
                 var iframe = document.getElementById('iframe'),
                     iframe = iframe.contentDocument,
-                    head = iframe.getElementsByTagName('head')[0],
-                    modernizr = iframe.createElement('script'),
+                    body = iframe.getElementsByTagName('body')[0],
                     ajax = iframe.createElement('script'),
-                    jQuery = iframe.createElement('script'),
+                    modernizr = iframe.createElement('script'),
                     main = iframe.createElement('script');
                 modernizr.src = '/js/schedule/modernizr.js';
                 ajax.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js';
-                jQuery.
                 main.src = '/js/schedule/main.js';
-                head.appendChild(modernizr)
-                head.appendChild(main)
+                body.appendChild(ajax)
+                body.appendChild(modernizr)
+                body.appendChild(main)
         }
     </script>
    </body>
