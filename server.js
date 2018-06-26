@@ -120,7 +120,7 @@ app.post('/getRooms',urlencodedParser,function (req,res) {
 })
 
 app.post('/getStudents',urlencodedParser,function (req,res) {
-    console.log("/getStudents: "req.body.teacher_ID,req.body.room_ID)
+    console.log("/getStudents: ",req.body.teacher_ID,req.body.room_ID)
     var sql = "SELECT ST.student_ID AS student_ID, s.name AS name \
         FROM Students_Teachers AS ST\
         JOIN Students AS s ON (ST.student_ID = s.student_ID) \
