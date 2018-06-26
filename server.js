@@ -199,9 +199,9 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
             start   = date.getTime(),
             end     = date.getTime(),
             room    = results[0].room,
-            span    = req.body.start;
+            span    = parseInt(req.body.start);
         for (var i = 0; i < 7; i++) {
-            dateArray.push(dateFormat(parseInt(span)));
+            dateArray.push(dateFormat(span));
             span += 86400000;            
         }
         for (var i = 1; i < results.length; i++) {
