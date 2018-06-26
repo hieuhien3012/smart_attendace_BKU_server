@@ -75,10 +75,10 @@
             }
             }).done(function(data) {
                 data = JSON.parse(data)
-                var $ul1 = $("<ul></ul>"),
-                    $ul2 = $("<ul></ul>");
+                var $ul1 = $("<ul class=\"item-list\"></ul>"),
+                    $ul2 = $("<ul class=\"item-list\"></ul>");
                 for (const i in data) {
-                    var $li = $("<li></li>"),
+                    var $li = $('<li class="item" ></li>'),
                         $img = $("<img src ='/img/classroom.png'>"),
                         $h = $("<h4>"+data[i].room_ID+"</h4>"),
                         $c = $("<ul>\

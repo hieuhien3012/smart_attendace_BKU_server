@@ -362,30 +362,33 @@ div#ul2{
 	min-width: 400px;
 }
 
-div.listview ul{
+
+
+.item-list{
 	list-style-type: none;
 	max-width: 400px;
 }
 
-div.listview li {
+.item {
 	padding: 10px;
 	overflow: auto;
 	border: 1px solid #eee;
 	background-color: rgba(221, 221, 221, 0.774);
 }
 
-div.listview li img {
+.item img {
 	float: left;
 	margin: 0 15px 0 0;
 	width: 70px;
 	height: 70px;
 }
 
-div.listview li p {
-	font: 200 12px/1.5 Georgia, Times New Roman, serif;
+.item li,a {
+	font-family: "Source Sans Pro", sans-serif;
+	font-size: 1.0rem;
 }
 
-div.listview li:hover {
+.item:hover {
 	background: rgba(238, 238, 238, 0.384);
 	cursor: pointer;
 }
