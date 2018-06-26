@@ -201,10 +201,9 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
             room    = results[0].room,
             span    = req.body.start;
         for (var i = 0; i < 7; i++) {
-            dateArray.push(dateFormat(span));
+            dateArray.push(dateFormat(parseInt(span)));
             span += 86400000;            
         }
-        console.log(dateArray)
         for (var i = 1; i < results.length; i++) {
             var d = new Date(parseInt(results[i].time)),
                 r = results[i].room;
