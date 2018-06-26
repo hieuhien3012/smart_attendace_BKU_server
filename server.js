@@ -204,7 +204,7 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
                 day     = date.getDay(),
                 start   = date.getTime(),
                 end     = date.getTime(),
-                room    = results[0].room,
+                room    = results[0].room;
             for (var i = 1; i < results.length; i++) {
                 var d = new Date(parseInt(results[i].time)),
                     r = results[i].room;
