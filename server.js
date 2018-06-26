@@ -229,7 +229,6 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
     //console.log(values)
     db.query(sql,values,function(err,results){
         if (err) throw err;
-        console.log(results)
         var span    = parseInt(req.body.start),
             array = [],
             dateArray = [];
@@ -268,6 +267,7 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
                 span : JSON.stringify(dateArray),
                 event: JSON.stringify(array)
             }))
+            console.log(array)
         } else {
             res.end(JSON.stringify({
                 span : JSON.stringify(dateArray),
