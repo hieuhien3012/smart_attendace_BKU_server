@@ -106,7 +106,7 @@ app.get('/weblogout', function (req, res) {
 
 //GET THINGS
 app.post('/getRooms',urlencodedParser,function (req,res) {
-    console.log("/getRooms: "+req.body.teacher_ID,req.body.room_ID)
+    console.log("/getRooms: ",req.body.teacher_ID,req.body.room_ID)
     var cmd = "SELECT room_ID,major,minor FROM Rooms WHERE teacher_ID = "+req.body.teacher_ID
         db.query(cmd,function(err,results){
             if (err) throw err;
@@ -120,7 +120,7 @@ app.post('/getRooms',urlencodedParser,function (req,res) {
 })
 
 app.post('/getStudents',urlencodedParser,function (req,res) {
-    console.log("/getStudents: "+req.body)
+    console.log("/getStudents: "req.body.teacher_ID,req.body.room_ID)
     var sql = "SELECT ST.student_ID AS student_ID, s.name AS name \
         FROM Students_Teachers AS ST\
         JOIN Students AS s ON (ST.student_ID = s.student_ID) \
