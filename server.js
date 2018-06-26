@@ -138,8 +138,10 @@ app.post('/getStudents',urlencodedParser,function (req,res) {
             console.log("room == null")
             sql = sql+where+order;
         }
+        console.log(sql)
         db.query(sql,values,function(err,results){
             if (err) throw err;
+            console.log(results)
             array = []
             for (var i = 0; i < results.length; i++) {
                 array.push(results[i])
