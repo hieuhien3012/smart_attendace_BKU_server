@@ -24,9 +24,10 @@ app.post('/matday',urlencodedParser,function (req,res) {
         m1   = data.m1,
         h2   = data.h2,
         m2   = data.m2,
-        h    = h1,
-    for (var m = m1; (h == h2) && (m >= m2) ; m+5) {
+        h    = h1
+    for (var m = m1; h <= h2 ; m+5) {
         if(m>59){m=m-60;h++}
+        if((h==h2) && (m>m2)){break}
         console.log(h,m)
     }
     res.end()
