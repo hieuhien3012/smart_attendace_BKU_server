@@ -177,13 +177,18 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
     order = " ORDER BY time",
     values = [student_ID,start,end]
     if(room_ID != "undefined"){
+        console.log("!= undefined")
         sql = sql+room+order;
         values.push(room_ID)
     } else {
+        console.log("== undefined")
         sql = sql+order
     }
+    console.log(sql)
+    console.log(values)
     db.query(sql,values,function(err,results){
         if (err) throw err;
+        console.log(results)
         var array = [];
         var date    = new Date(parseInt(results[0].time)),
             day     = date.getDay(),
