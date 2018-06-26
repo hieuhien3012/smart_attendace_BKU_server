@@ -26,7 +26,7 @@ app.post('/matday',urlencodedParser,function (req,res) {
         m2   = parseInt(data.m2),
         h    = h1
     console.log(h1,m1,h2,m2,h)
-    for (var m = m1; m < 61 ; m+5) {
+    for (var m = m1; m < 61 ; m += 5) {
         if(m>59){
             m = m-60;
             h++
