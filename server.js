@@ -110,8 +110,7 @@ app.get('/students/room*', function (req, res) {
 })
 
 app.get('/attendance', function (req, res) {
-    var teacher_ID = req.cookies.teacher_ID,
-
+    var teacher_ID = req.cookies.teacher_ID
 })
 
 app.get('/weblogout', function (req, res) {
