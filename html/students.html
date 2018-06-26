@@ -87,12 +87,11 @@
                         $img = $("<img src ='/img/students.png'>"),
                         $h = $("<h5>"+data[i].name+"</h5>"),
                         $p = $( "<p>MSSV: "+data[i].student_ID+"</p>")
-
-                    // $a.addClass("student")
-                    $a.attr("onclick","attendance("+data[i].student_ID+")")
+                        $c = $("<ul>\
+                                    <li>MSSV: "+data[i].student_ID+"</li>\
+                                    <li><a href=\"/attendance/"+data[i].student_ID+"\" >Xem kết quả điểm danh</a></li>\
+                                </ul>");
                     $li.append($img,$h,$p)
-                    $a.append($li)
-
                     if (i%2 == 0) {
                         $ul1.append($a)
                     } else {
@@ -101,10 +100,8 @@
                 }
                 $("#ul1").append($ul1)
                 $("#ul2").append($ul2)
-                // $("#content").click(function() { 
-                //     var id = $(this).attr('id');
-                //     $("#content").empty()
-                // });
+                $("#ul1").append($ul1)
+                $("#ul2").append($ul2)
             });
             
         });
