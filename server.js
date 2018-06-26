@@ -97,9 +97,18 @@ app.get('/students*', function (req, res) {
     }
 })
 
-app.get('/attendance', function (req, res) {
-    var teacher_ID = req.cookies.teacher_ID
-})
+app.get('/attendance/*', function (req, res) {
+    var teacher_ID = req.cookies.teacher_ID,
+        student_ID    = (req.url).split("/")[2];
+    console.log("/students/room* :",teacher_ID,student_ID)
+    if (teacher_ID != "") {
+        res.cookie("student_ID",student_ID)
+        .sendFile( __dirname + "/html/" + "attendance.html" );
+    } else {
+        res.clearCookie("teacher_ID")
+        .clearCookie("name")
+        .sendFile( __dirname + "/html/" + "login.html" );
+    }})
 
 app.get('/weblogout', function (req, res) {
     res.clearCookie("teacher_ID")
@@ -157,14 +166,23 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
     var student_ID  =   parseInt(req.body.student_ID),
         start       =   parseInt(req.body.start),
         end         =   parseInt(req.body.end);
+        room_ID     =   req.body.room;
     var sql = "SELECT a.time AS time, r.room_ID AS room \
     FROM Attendance AS a\
     JOIN Rooms AS r ON (a.major = r.major AND a.minor = r.minor)\
     WHERE a.student_ID = ?\
     AND a.time > ?\
-    AND a.time < ?\
-    ORDER BY time"
-    db.query(sql,[student_ID,start,end],function(err,results){
+    AND a.time < ?",
+    room = "AND r.room_ID = ?",
+    order = "ORDER BY time",
+    values = [student_ID,start,end]
+    if(room_ID != "undefined"){
+        sql = sql+room+order;
+        values.push(room_ID)
+    } else {
+        sql = sql+order
+    }
+    db.query(sql,values,function(err,results){
         if (err) throw err;
         var array = [];
         var date    = new Date(parseInt(results[0].time)),
