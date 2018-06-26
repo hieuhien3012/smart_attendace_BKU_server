@@ -63,7 +63,7 @@
     </script>
     <script type="text/javascript" language="javascript">
         $(document).ready(function() {
-            var d = new Date();
+            // var d = new Date();
         });
 
         function search(){
@@ -90,14 +90,20 @@
             }
             }).done(function(data) {
                 data = JSON.parse(data)
+                var event = JSON.parse(data.event),
+                    span  = JSON.parse(data.span)
                 var $iframe = $("#iframe");
                 $iframe = $iframe.contents();
                 $('li[class="single-event"]',$iframe).remove();
-                for (let i = 0; i < data.length; i++) {
-                    var day = data[i].day,
-                        start = data[i].start,
-                        end = data[i].end,
-                        room = data[i].room,
+                for (let i = 0; i < span.length; i++) {
+                    var $br = $("<br>"+span[i])
+                    $("#span"+i).append($br)
+                }
+                for (let i = 0; i < event.length; i++) {
+                    var day = event[i].day,
+                        start = event[i].start,
+                        end = event[i].end,
+                        room = event[i].room,
                         top = scale(start),
                         height = scale(end)-top;
                     var $li = $("<li></li>"),

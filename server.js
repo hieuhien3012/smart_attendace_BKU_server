@@ -18,6 +18,7 @@ var db = mysql.createConnection({
 app.use(express.static(__dirname + '/public'));
 app.use(cookieParser());
 
+//WEB
 app.get('/', function (req, res) {
     if (req.cookies.teacher_ID != null) {
         res.sendFile( __dirname + "/html/" + "attendance.html" );
@@ -59,9 +60,16 @@ app.post('/webSignup',urlencodedParser,function(req,res){
     })
 })
 
+app.get('/weblogout', function (req, res) {
+    res.clearCookie("teacher_ID")
+    .clearCookie("name")
+    .clearCookie("student_ID")
+    .sendFile( __dirname + "/html/" + "login.html" );
+})
+
 app.get('/home', function (req, res) {
     var teacher_ID = req.cookies.teacher_ID
-    console.log("/home :"+teacher_ID)
+    //console.log("/home :"+teacher_ID)
     if (teacher_ID != null) {
         res.sendFile( __dirname + "/html/" + "attendance.html" );
     } else {
@@ -73,7 +81,7 @@ app.get('/home', function (req, res) {
 
 app.get('/class', function (req, res) {
     var teacher_ID = req.cookies.teacher_ID;
-    console.log("/class :"+teacher_ID)
+    //console.log("/class :"+teacher_ID)
     if (teacher_ID != null) {
         res.sendFile( __dirname + "/html/" + "class.html" );
     } else {
@@ -86,7 +94,7 @@ app.get('/class', function (req, res) {
 app.get('/students*', function (req, res) {
     var teacher_ID = req.cookies.teacher_ID,
         room_ID    = (req.url).split("/")[2];
-    console.log("/students/room* :",teacher_ID,room_ID)
+    //console.log("/students/room* :",teacher_ID,room_ID)
     if (teacher_ID != "") {
         res.cookie("room_ID",room_ID)
         .sendFile( __dirname + "/html/" + "students.html" );
@@ -100,7 +108,7 @@ app.get('/students*', function (req, res) {
 app.get('/attendance/*', function (req, res) {
     var teacher_ID = req.cookies.teacher_ID,
         student_ID    = (req.url).split("/")[2];
-    console.log("/students/room* :",teacher_ID,student_ID)
+    //console.log("/students/room* :",teacher_ID,student_ID)
     if (teacher_ID != "") {
         res.cookie("student_ID",student_ID)
         .sendFile( __dirname + "/html/" + "attendance.html" );
@@ -110,16 +118,11 @@ app.get('/attendance/*', function (req, res) {
         .sendFile( __dirname + "/html/" + "login.html" );
     }})
 
-app.get('/weblogout', function (req, res) {
-    res.clearCookie("teacher_ID")
-    .clearCookie("name")
-    .clearCookie("student_ID")
-    .sendFile( __dirname + "/html/" + "login.html" );
-})
 
-//GET THINGS
+
+//GET THINGS FROM WEB
 app.post('/getRooms',urlencodedParser,function (req,res) {
-    console.log("/getRooms: ",req.body.teacher_ID,req.body.room_ID)
+    //console.log("/getRooms: ",req.body.teacher_ID,req.body.room_ID)
     var cmd = "SELECT room_ID,major,minor FROM Rooms WHERE teacher_ID = "+req.body.teacher_ID
         db.query(cmd,function(err,results){
             if (err) throw err;
@@ -127,13 +130,13 @@ app.post('/getRooms',urlencodedParser,function (req,res) {
             for (var i = 0; i < results.length; i++) {
                 array.push(results[i]);
             }
-            console.log(array)
+            //console.log(array)
             res.end(JSON.stringify(array))
         })
 })
 
 app.post('/getStudents',urlencodedParser,function (req,res) {
-    console.log("/getStudents: ",req.body.teacher_ID,req.body.room_ID)
+    //console.log("/getStudents: ",req.body.teacher_ID,req.body.room_ID)
     var sql = "SELECT ST.student_ID AS student_ID, s.name AS name \
         FROM Students_Teachers AS ST\
         JOIN Students AS s ON (ST.student_ID = s.student_ID) \
@@ -144,16 +147,16 @@ app.post('/getStudents',urlencodedParser,function (req,res) {
         order = " ORDER BY student_ID",
         values = [parseInt(req.body.teacher_ID)]
         if(req.body.room_ID != "undefined"){
-            console.log("!= null")
+            //console.log("!= null")
             sql = sql+join+where+room+order;
             values.push(req.body.room_ID);
         } else {
-            console.log("== null")
+            //console.log("== null")
             sql = sql+where+order;
         }
         db.query(sql,values,function(err,results){
             if (err) throw err;
-            console.log(sql,values,results)
+            //console.log(sql,values,results)
             array = []
             for (var i = 0; i < results.length; i++) {
                 array.push(results[i])
@@ -177,24 +180,30 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
     order = " ORDER BY time",
     values = [student_ID,start,end]
     if(room_ID != null){
-        console.log("!= undefined")
+        //console.log("!= undefined")
         sql = sql+room+order;
         values.push(room_ID)
     } else {
-        console.log("== undefined")
+        //console.log("== undefined")
         sql = sql+order
     }
-    console.log(sql)
-    console.log(values)
+    //console.log(sql)
+    //console.log(values)
     db.query(sql,values,function(err,results){
         if (err) throw err;
-        console.log(results)
-        var array = [];
+        //console.log(results)
+        var array = [],
+            dateArray = [];
         var date    = new Date(parseInt(results[0].time)),
             day     = date.getDay(),
             start   = date.getTime(),
             end     = date.getTime(),
-            room    = results[0].room;
+            room    = results[0].room,
+            span    = req.body.start;
+        for (let i = 0; i < 7; i++) {
+            dateArray.push(dateFormat(span));
+            span += 86400000;            
+        }
         for (var i = 1; i < results.length; i++) {
             var d = new Date(parseInt(results[i].time)),
                 r = results[i].room;
@@ -206,20 +215,24 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
                         day     : day,
                         start   : timeFormat(start),
                         end     : timeFormat(end),
-                        room    : room
+                        room    : room,
                     }
                     array.push(json)
                 }
-                day     = d.getDay(), 
+                day     = d.getDay(),
                 room    = r,
                 start   = d.getTime(),
                 end     = d.getTime() 
             }
         }
-        res.end(JSON.stringify(array))
+        res.end(JSON.stringify({
+            span : JSON.stringify(dateArray),
+            event: JSON.stringify(array)
+        }))
     });
 })
 
+//APP
 app.post('/applogin',urlencodedParser,function(req,res){
     var student_ID = req.body.username;
     var password = req.body.password;
@@ -268,7 +281,6 @@ app.post('/app',urlencodedParser, function (req, res) {
     var minor = parseInt(data.minor)
     var rssi = parseInt(data.rssi)
     var resTime = timeFormat(time)
-    console.log(resTime)
 
     var a = [
         [ time, student_ID , major, minor, rssi]
@@ -291,22 +303,12 @@ app.post('/app',urlencodedParser, function (req, res) {
     })
 })
 
-app.post('/rssi',urlencodedParser,function(req,res){
-    console.log(req.body)
-    res.end();
-})
-
-app.get('/gethere',function(req,res){
-    console.log(new Date())
-    res.end();
-})
-
 http.listen(8800, function() {
-    console.log('listening on *:8800');
+    //console.log('listening on *:8800');
 });
 
-function timeFormat(t){
-    var ret = new Date(t)
+function timeFormat(timeStamp){
+    var ret = new Date(timeStamp)
 
     var hours = ret.getHours();
     hours =  hours < 10 ? '0'+ hours: hours.toString();
@@ -314,6 +316,18 @@ function timeFormat(t){
     minutes =  minutes < 10 ? '0'+ minutes: minutes.toString();
 
     ret = hours+":"+minutes;
+    return ret;
+}
+
+function dateFormat(timeStamp){
+    var ret = new Date(timeStamp)
+
+    var date = ret.getDate();
+    date =  date < 10 ? '0'+ date: date.toString();
+    var month = ret.getMonth();
+    month =  month < 9 ? '0'+ (month+1): month.toString();
+
+    ret = date+"/"+month;
     return ret;
 }
 
