@@ -124,10 +124,10 @@ app.post('/getStudents',urlencodedParser,function (req,res) {
         JOIN Teachers AS t ON (ST.teacher_ID = t.teacher_ID) \
         JOIN Rooms AS r ON (r.student_ID = s.student_ID)\
         WHERE ST.teacher_ID = ?",
-        room = "AND r.room_ID = ?",
-        order = "ORDER BY student_ID",
+        room = " AND r.room_ID = ?",
+        order = " ORDER BY student_ID",
         values = [parseInt(req.body.teacher_ID)]
-        if(req.body.room_ID != ""){
+        if(req.body.room_ID != null){
             sql = sql+room+order;
             values.push(req.body.room_ID);
         } else {
