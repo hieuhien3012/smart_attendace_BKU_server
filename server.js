@@ -23,7 +23,6 @@ app.post('/matday',urlencodedParser,function (req,res) {
         id   = parseInt(data.id),
         major= parseInt(data.major),
         minor= parseInt(data.minor),
-        rssi = parseInt(data.rssi),
         date  = parseInt(data.date),
         h1   = parseInt(data.h1),
         m1   = parseInt(data.m1),
@@ -41,7 +40,8 @@ app.post('/matday',urlencodedParser,function (req,res) {
             break
         }
         var time = (new Date(2018,4,date,h,m)).getTime()
-        var values = [
+        var rssi = getRandomInt(-90,-30),
+            values = [
             [time,id,major,minor,rssi]
         ]
         db.query(sql,[values],function (err,results) {
@@ -51,6 +51,12 @@ app.post('/matday',urlencodedParser,function (req,res) {
     }
     res.end()
 })
+
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
+}
 
 //WEB
 app.get('/', function (req, res) {
