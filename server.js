@@ -131,17 +131,13 @@ app.post('/getStudents',urlencodedParser,function (req,res) {
         order = " ORDER BY student_ID",
         values = [parseInt(req.body.teacher_ID)]
         if(req.body.room_ID != "undefined"){
-            console.log("room != null")
             sql = sql+join+where+room+order;
             values.push(req.body.room_ID);
         } else {
-            console.log("room == null")
             sql = sql+where+order;
         }
-        console.log(sql)
         db.query(sql,values,function(err,results){
             if (err) throw err;
-            console.log(results)
             array = []
             for (var i = 0; i < results.length; i++) {
                 array.push(results[i])

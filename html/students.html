@@ -79,6 +79,7 @@
             }
             }).done(function(data) {
                 data = JSON.parse(data)
+                console.log(data)
                 var $ul1 = $("<ul class=\"item-list\"></ul>"),
                     $ul2 = $("<ul class=\"item-list\"></ul>");
                 for (const i in data) {
@@ -87,16 +88,15 @@
                         $li = $("<li class=\"item\" ></li>"),
                         $img = $("<img src ='/img/students.png'>"),
                         $h = $("<h5>"+data[i].name+"</h5>"),
-                        $p = $( "<p>MSSV: "+data[i].student_ID+"</p>")
                         $c = $("<ul>\
                                     <li>MSSV: "+data[i].student_ID+"</li>\
                                     <li><a href=\"/attendance/"+data[i].student_ID+"\" >Xem kết quả điểm danh</a></li>\
                                 </ul>");
-                    $li.append($img,$h,$p)
+                    $li.append($img,$h,$c)
                     if (i%2 == 0) {
-                        $ul1.append($a)
+                        $ul1.append($li)
                     } else {
-                        $ul2.append($a)
+                        $ul2.append($li)
                     }
                 }
                 $("#ul1").append($ul1)
