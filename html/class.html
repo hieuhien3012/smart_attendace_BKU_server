@@ -82,9 +82,8 @@
                         $img = $("<img src ='/img/classroom.png'>"),
                         $h = $("<h5>"+data[i].room_ID+"</h5>"),
                         $c = $("<ul>\
-                                    <li>Khu vực:</li>\
-                                    <li>Đơn vị: Đại học Bách Khoa TPHCM</li>\
-                                    <li><a href=\"/students/"+data[i].room_ID+"\" >Xem danh sách sinh viên</a></li>\
+                                    <li>Place: Đại học Bách Khoa TPHCM</li>\
+                                    <li><a href=\"/students/"+data[i].room_ID+"\" >See students list</a></li>\
                                 </ul>");
                     $li.append($img,$h,$c)
                     if (i%2 == 0) {

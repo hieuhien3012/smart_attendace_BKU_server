@@ -89,8 +89,8 @@
                         $img = $("<img src ='/img/students.png'>"),
                         $h = $("<h5>"+data[i].name+"</h5>"),
                         $c = $("<ul>\
-                                    <li>MSSV: "+data[i].student_ID+"</li>\
-                                    <li><a href=\"/attendance/"+data[i].student_ID+"\" >Xem kết quả điểm danh</a></li>\
+                                    <li>ID: "+data[i].student_ID+"</li>\
+                                    <li><a href=\"/attendance/"+data[i].student_ID+"\" >See attendance result</a></li>\
                                 </ul>");
                     $li.append($img,$h,$c)
                     if (i%2 == 0) {
