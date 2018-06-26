@@ -124,17 +124,17 @@ app.post('/getStudents',urlencodedParser,function (req,res) {
     var sql = "SELECT ST.student_ID AS student_ID, s.name AS name \
         FROM Students_Teachers AS ST\
         JOIN Students AS s ON (ST.student_ID = s.student_ID) \
-        JOIN Teachers AS t ON (ST.teacher_ID = t.teacher_ID) \
-        JOIN Rooms AS r ON (r.teacher_ID = t.teacher_ID)\
-        WHERE ST.teacher_ID = ?",
+        JOIN Teachers AS t ON (ST.teacher_ID = t.teacher_ID)",
+        join = "JOIN Rooms AS r ON (r.teacher_ID = t.teacher_ID)"
+        where = "WHERE ST.teacher_ID = ?",
         room = " AND r.room_ID = ?",
         order = " ORDER BY student_ID",
         values = [parseInt(req.body.teacher_ID)]
         if(req.body.room_ID != null){
-            sql = sql+room+order;
+            sql = sql+join+where+room+order;
             values.push(req.body.room_ID);
         } else {
-            sql = sql+order;
+            sql = sql+where+order;
         }
         db.query(sql,values,function(err,results){
             if (err) throw err;
