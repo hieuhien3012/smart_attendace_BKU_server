@@ -173,8 +173,8 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
     WHERE a.student_ID = ?\
     AND a.time > ?\
     AND a.time < ?",
-    room = "AND r.room_ID = ?",
-    order = "ORDER BY time",
+    room = " AND r.room_ID = ?",
+    order = " ORDER BY time",
     values = [student_ID,start,end]
     if(room_ID != "undefined"){
         sql = sql+room+order;
