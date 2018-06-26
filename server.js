@@ -87,7 +87,7 @@ app.get('/students/*', function (req, res) {
     var teacher_ID = req.cookies.teacher_ID,
         room_ID    = (req.url).split("/")[2];
     console.log("/students :"+teacher_ID,room_ID)
-    if (teacher_ID != "all") {
+    if (teacher_ID != "") {
         res.sendFile( __dirname + "/html/" + "students.html" );
     } else {
         res.clearCookie("teacher_ID")
