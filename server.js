@@ -84,9 +84,21 @@ app.get('/class', function (req, res) {
 })
 
 app.get('/students', function (req, res) {
+    var teacher_ID = req.cookies.teacher_ID;
+    console.log("/students :",teacher_ID,room_ID)
+    if (teacher_ID != "") {
+        res.sendFile( __dirname + "/html/" + "students.html" );
+    } else {
+        res.clearCookie("teacher_ID")
+        .clearCookie("name")
+        .sendFile( __dirname + "/html/" + "login.html" );
+    }
+})
+
+app.get('/students/room*', function (req, res) {
     var teacher_ID = req.cookies.teacher_ID,
-        room_ID    = (req.url).split("/")[2];
-    console.log("/students :"+teacher_ID,room_ID)
+        room_ID    = (req.url).split("room")[1];
+    console.log("/students/room* :",teacher_ID,room_ID)
     if (teacher_ID != "") {
         res.cookie("room_ID",room_ID)
         .sendFile( __dirname + "/html/" + "students.html" );
@@ -95,6 +107,11 @@ app.get('/students', function (req, res) {
         .clearCookie("name")
         .sendFile( __dirname + "/html/" + "login.html" );
     }
+})
+
+app.get('/attendance', function (req, res) {
+    var teacher_ID = req.cookies.teacher_ID,
+
 })
 
 app.get('/weblogout', function (req, res) {
