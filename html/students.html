@@ -100,31 +100,29 @@
                 }
                 $("#ul1").append($ul1)
                 $("#ul2").append($ul2)
-                $("#ul1").append($ul1)
-                $("#ul2").append($ul2)
             });
             
         });
 
-        function attendance(student_ID) { 
-            $.ajax({
-            url: 'attendance',
-            type: 'POST',
-            dataType: 'html',
-            data: {
-                student_ID : student_ID
-            }
-            }).done(function(data) {
-                $("#content").empty()
-                console.log(data)
-                for (let i = 0; i < data.length; i++) {
-                    var $p = $("<p></p>")
-                    console.log(data[i])
-                    $p.html = data[i]
-                    $("#content").append($p)
-                }
-            });
-        }
+        // function attendance(student_ID) { 
+        //     $.ajax({
+        //     url: 'attendance',
+        //     type: 'POST',
+        //     dataType: 'html',
+        //     data: {
+        //         student_ID : student_ID
+        //     }
+        //     }).done(function(data) {
+        //         $("#content").empty()
+        //         console.log(data)
+        //         for (let i = 0; i < data.length; i++) {
+        //             var $p = $("<p></p>")
+        //             console.log(data[i])
+        //             $p.html = data[i]
+        //             $("#content").append($p)
+        //         }
+        //     });
+        // }
     </script>
    </body>
 </html>
