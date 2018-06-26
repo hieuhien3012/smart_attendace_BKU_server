@@ -97,9 +97,7 @@
                 $iframe = $iframe.contents();
                 $('li[class="single-event"]',$iframe).remove();
                 for (let i = 0; i < span.length; i++) {
-                    var $br = $("<br>" + span[i])
-                    console.log(span[i],$br)
-                    $("#span"+i,$iframe).append($br)
+                    $("#span"+i,$iframe).text(span[i])
                 }
                 for (let i = 0; i < event.length; i++) {
                     var day = event[i].day,
