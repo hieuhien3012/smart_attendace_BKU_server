@@ -18,6 +18,18 @@ var db = mysql.createConnection({
 app.use(express.static(__dirname + '/public'));
 app.use(cookieParser());
 
+app.post('/matday',urlencodedParser,function (req,res) {
+    var data = JSON.parse(req.body),
+        h1   = data.h1,
+        m1   = data.m1,
+        h2   = data.h2,
+        m2   = data.m2
+    for (var h = h1, m = m1; (h == h2) && (m <= m2) ; m+5) {
+        if(m>59){m=m-60;h++}
+        console.log(h,m)
+    }
+})
+
 //WEB
 app.get('/', function (req, res) {
     if (req.cookies.teacher_ID != null) {
@@ -117,8 +129,6 @@ app.get('/attendance/*', function (req, res) {
         .clearCookie("name")
         .sendFile( __dirname + "/html/" + "login.html" );
     }})
-
-
 
 //GET THINGS FROM WEB
 app.post('/getRooms',urlencodedParser,function (req,res) {
