@@ -81,13 +81,12 @@
                     var $li = $("<li></li>"),
                         $img = $("<img src ='/img/classroom.png'>"),
                         $h = $("<h4>"+data[i].room_ID+"</h4>"),
-                        $p = $("<p>Major:"+data[i].minor+"\
-                                Minor: "+data[i].minor+ "</p>");
-                    $li.append($img,$h,$p)
-                    $li.click(function () {
-                        $.cookie("room_ID",data[i].room_ID)
-                        $.get("/students")
-                    })
+                        $c = $("<ul>\
+                                    <li>Khu vực:</li>\
+                                    <li>Đơn vị: Đại học Bách Khoa TPHCM</li>\
+                                </ul>");
+                        $a = $('<a href="/students/'+room_ID+'" >Xem danh sách sinh viên</a>')            
+                    $li.append($img,$h,$c)
                     if (i%2 == 0) {
                         $ul1.append($li)
                     } else {
