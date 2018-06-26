@@ -32,6 +32,7 @@ app.post('/matday',urlencodedParser,function (req,res) {
             h++
         }
         if( h == h2){
+            console.log("==",h,m)
             break
         }
         console.log(h,m)
