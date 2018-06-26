@@ -192,43 +192,45 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
     db.query(sql,values,function(err,results){
         if (err) throw err;
         //console.log(results)
-        var array = [],
-            dateArray = [];
-        var date    = new Date(parseInt(results[0].time)),
-            day     = date.getDay(),
-            start   = date.getTime(),
-            end     = date.getTime(),
-            room    = results[0].room,
-            span    = parseInt(req.body.start);
-        for (var i = 0; i < 7; i++) {
-            dateArray.push(dateFormat(span));
-            span += 86400000;            
-        }
-        for (var i = 1; i < results.length; i++) {
-            var d = new Date(parseInt(results[i].time)),
-                r = results[i].room;
-            if((d.getDay() == day) && (r == room) && ((d.getTime() - end) < 900000)){
-                end = parseInt(results[i].time)
-            } else {
-                if (end - start > 1800000) {
-                    var json = {
-                        day     : day,
-                        start   : timeFormat(start),
-                        end     : timeFormat(end),
-                        room    : room,
-                    }
-                    array.push(json)
-                }
-                day     = d.getDay(),
-                room    = r,
-                start   = d.getTime(),
-                end     = d.getTime() 
+        if(results[0] != null){    
+            var array = [],
+                dateArray = [];
+            var date    = new Date(parseInt(results[0].time)),
+                day     = date.getDay(),
+                start   = date.getTime(),
+                end     = date.getTime(),
+                room    = results[0].room,
+                span    = parseInt(req.body.start);
+            for (var i = 0; i < 7; i++) {
+                dateArray.push(dateFormat(span));
+                span += 86400000;            
             }
+            for (var i = 1; i < results.length; i++) {
+                var d = new Date(parseInt(results[i].time)),
+                    r = results[i].room;
+                if((d.getDay() == day) && (r == room) && ((d.getTime() - end) < 900000)){
+                    end = parseInt(results[i].time)
+                } else {
+                    if (end - start > 1800000) {
+                        var json = {
+                            day     : day,
+                            start   : timeFormat(start),
+                            end     : timeFormat(end),
+                            room    : room,
+                        }
+                        array.push(json)
+                    }
+                    day     = d.getDay(),
+                    room    = r,
+                    start   = d.getTime(),
+                    end     = d.getTime() 
+                }
+            }
+            res.end(JSON.stringify({
+                span : JSON.stringify(dateArray),
+                event: JSON.stringify(array)
+            }))
         }
-        res.end(JSON.stringify({
-            span : JSON.stringify(dateArray),
-            event: JSON.stringify(array)
-        }))
     });
 })
 
