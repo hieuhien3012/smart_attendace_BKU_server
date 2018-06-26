@@ -19,7 +19,7 @@ app.use(express.static(__dirname + '/public'));
 app.use(cookieParser());
 
 app.post('/matday',urlencodedParser,function (req,res) {
-    var data = JSON.parse(req.body),
+    var data = req.body,
         h1   = data.h1,
         m1   = data.m1,
         h2   = data.h2,
@@ -28,6 +28,7 @@ app.post('/matday',urlencodedParser,function (req,res) {
         if(m>59){m=m-60;h++}
         console.log(h,m)
     }
+    res.end()
 })
 
 //WEB
