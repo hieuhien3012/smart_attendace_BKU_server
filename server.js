@@ -176,7 +176,7 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
     room = " AND r.room_ID = ?",
     order = " ORDER BY time",
     values = [student_ID,start,end]
-    if(room_ID != "undefined"){
+    if(room_ID != null){
         console.log("!= undefined")
         sql = sql+room+order;
         values.push(room_ID)
