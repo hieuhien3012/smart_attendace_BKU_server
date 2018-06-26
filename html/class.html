@@ -85,6 +85,7 @@
                                 Minor: "+data[i].minor+ "</p>");
                     $li.append($img,$h,$p)
                     $li.click(function () {
+                        console.log("click")
                         document.cookie = document.cookie +"; room_ID="+ data[i].room_ID;
                         $.ajax({
                         url: '/students',
