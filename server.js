@@ -30,7 +30,7 @@ app.post('/matday',urlencodedParser,function (req,res) {
         h2   = parseInt(data.h2),
         m2   = parseInt(data.m2),
         h    = h1,
-        sql = "insert into Attendance values ?",
+        sql = "insert into Attendance values ?"
 
     for (var m = m1; m < 66 ; m += 5) {
         if(m>59){
