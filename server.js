@@ -106,7 +106,7 @@ app.get('/weblogout', function (req, res) {
 
 //GET THINGS
 app.post('/getRooms',urlencodedParser,function (req,res) {
-    console.log("/getRooms: "+req.body)
+    console.log("/getRooms: "+req.body.teacher_ID,req.body.room_ID)
     var cmd = "SELECT room_ID,major,minor FROM Rooms WHERE teacher_ID = "+req.body.teacher_ID
         db.query(cmd,function(err,results){
             if (err) throw err;
