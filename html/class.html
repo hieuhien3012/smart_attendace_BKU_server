@@ -85,12 +85,8 @@
                                 Minor: "+data[i].minor+ "</p>");
                     $li.append($img,$h,$p)
                     $li.click(function () {
-                        console.log("click")
-                        document.cookie = document.cookie +"; room_ID="+ data[i].room_ID;
-                        $.ajax({
-                        url: '/students',
-                        type: 'GET',
-                        })
+                        $.cookie("room_ID",data[i].room_ID)
+                        $.get("/students")
                     })
                     if (i%2 == 0) {
                         $ul1.append($li)
