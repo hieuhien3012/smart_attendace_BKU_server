@@ -192,14 +192,14 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
     db.query(sql,values,function(err,results){
         if (err) throw err;
         //console.log(results)
-        var span    = parseInt(req.body.start);
+        var span    = parseInt(req.body.start),
+            array = [],
+            dateArray = [];
         for (var i = 0; i < 7; i++) {
             dateArray.push(dateFormat(span));
             span += 86400000;            
         }
         if(results[0] != null){    
-            var array = [],
-                dateArray = [];
             var date    = new Date(parseInt(results[0].time)),
                 day     = date.getDay(),
                 start   = date.getTime(),
@@ -226,6 +226,11 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
                     end     = d.getTime() 
                 }
             }
+            res.end(JSON.stringify({
+                span : JSON.stringify(dateArray),
+                event: JSON.stringify(array)
+            }))
+        } else {
             res.end(JSON.stringify({
                 span : JSON.stringify(dateArray),
                 event: JSON.stringify(array)
