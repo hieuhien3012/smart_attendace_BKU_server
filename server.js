@@ -20,22 +20,32 @@ app.use(cookieParser());
 
 app.post('/matday',urlencodedParser,function (req,res) {
     var data = req.body,
+        id   = parseInt(data.id),
+        major= parseInt(data.major),
+        minor= parseInt(data.minor),
+        rssi = parseInt(data.rssi),
+        date  = parseInt(data.date),
         h1   = parseInt(data.h1),
         m1   = parseInt(data.m1),
         h2   = parseInt(data.h2),
         m2   = parseInt(data.m2),
-        h    = h1
-    console.log(h1,m1,h2,m2,h)
+        h    = h1,
+        sql = "insert into Attendance values ?",
+
     for (var m = m1; m < 66 ; m += 5) {
         if(m>59){
             m = m-60;
             h++
         }
         if( h==h2 && m>m2){
-            console.log("==",h,m)
             break
         }
-        console.log(h,m)
+        var time = (new Date(2018,4,date,h,m)).getTime()
+        var values = [
+            [time,id,major,minor,rssi]
+        ]
+        // db.query(sql,values)
+        console.log(values)
     }
     res.end()
 })
