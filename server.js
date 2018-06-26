@@ -61,6 +61,7 @@ app.post('/webSignup',urlencodedParser,function(req,res){
 
 app.get('/home', function (req, res) {
     var teacher_ID = req.cookies.teacher_ID
+    console.log("/home :"+teacher_ID)
     if (teacher_ID != null) {
         res.sendFile( __dirname + "/html/" + "attendance.html" );
     } else {
@@ -71,8 +72,8 @@ app.get('/home', function (req, res) {
 })
 
 app.get('/class', function (req, res) {
-    console.log(req.cookies)
-    var teacher_ID = req.cookies.teacher_ID
+    var teacher_ID = req.cookies.teacher_ID;
+    console.log("/class :"+teacher_ID)
     if (teacher_ID != null) {
         res.sendFile( __dirname + "/html/" + "class.html" );
     } else {
@@ -104,7 +105,7 @@ app.get('/weblogout', function (req, res) {
 
 //GET THINGS
 app.post('/getRooms',urlencodedParser,function (req,res) {
-    console.log(req.body.teacher_ID)
+    console.log("/getRooms: "+req.body.teacher_ID)
     var cmd = "SELECT room_ID,major,minor FROM Rooms WHERE teacher_ID = "+req.body.teacher_ID
         db.query(cmd,function(err,results){
             if (err) throw err;
