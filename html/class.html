@@ -84,6 +84,13 @@
                         $p = $("<p>Major:"+data[i].minor+"\
                                 Minor: "+data[i].minor+ "</p>");
                     $li.append($img,$h,$p)
+                    $li.click(function () {
+                        document.cookie = document.cookie +"; room_ID="+ data[i].room_ID;
+                        $.ajax({
+                        url: '/students',
+                        type: 'GET',
+                        })
+                    })
                     if (i%2 == 0) {
                         $ul1.append($li)
                     } else {

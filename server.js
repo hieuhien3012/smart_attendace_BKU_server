@@ -83,7 +83,8 @@ app.get('/class', function (req, res) {
 })
 
 app.get('/students', function (req, res) {
-    var teacher_ID = req.cookies.teacher_ID
+    var teacher_ID = req.cookies.teacher_ID,
+        room_ID    = req.cookies.room_ID
     if (teacher_ID != null) {
         res.sendFile( __dirname + "/html/" + "students.html" );
     } else {
@@ -120,9 +121,18 @@ app.post('/getStudents',urlencodedParser,function (req,res) {
         FROM Students_Teachers AS ST\
         JOIN Students AS s ON (ST.student_ID = s.student_ID) \
         JOIN Teachers AS t ON (ST.teacher_ID = t.teacher_ID) \
-        WHERE ST.teacher_ID = ? \
-        ORDER BY student_ID"
-        db.query(sql,[parseInt(req.body.teacher_ID)],function(err,results){
+        JOIN Rooms AS r ON (r.student_ID = s.student_ID)\
+        WHERE ST.teacher_ID = ?",
+        room = "AND r.room_ID = ?",
+        order = "ORDER BY student_ID",
+        values = [parseInt(req.body.teacher_ID)]
+        if(req.body.room_ID != ""){
+            sql = sql+room+order;
+            values.push(req.body.room_ID);
+        } else {
+            sql = sql+order;
+        }
+        db.query(sql,values,function(err,results){
             if (err) throw err;
             array = []
             for (var i = 0; i < results.length; i++) {
