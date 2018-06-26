@@ -84,7 +84,8 @@ app.get('/class', function (req, res) {
 
 app.get('/students', function (req, res) {
     var teacher_ID = req.cookies.teacher_ID,
-        room_ID    = req.cookies.room_ID
+        room_ID    = req.cookies.room_ID;
+    console(teacher_ID,room_ID)
     if (teacher_ID != null) {
         res.sendFile( __dirname + "/html/" + "students.html" );
     } else {
