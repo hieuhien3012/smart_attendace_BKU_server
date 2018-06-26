@@ -74,7 +74,8 @@
             type: 'POST',
             dataType: 'html',
             data: {
-                teacher_ID : cookieParse("teacher_ID")
+                teacher_ID : cookieParse("teacher_ID"),
+                room_ID    : cookieParse("room_ID")
             }
             }).done(function(data) {
                 data = JSON.parse(data)
