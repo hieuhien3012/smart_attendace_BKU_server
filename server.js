@@ -228,7 +228,7 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
                         array.push(json)
                     }
                 } else {
-                    if (end - start > 1800000) {
+                    if (end - start > 900000) {
                         var json = {
                             day     : day,
                             start   : timeFormat(start),
