@@ -272,6 +272,7 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
                     end     = d.getTime() 
                 }
             }
+            console.log(array)
             res.end(JSON.stringify({
                 span : JSON.stringify(dateArray),
                 event: JSON.stringify(array)
