@@ -27,7 +27,7 @@ function getRandomInt(min, max) {
 //WEB
 app.get('/', function (req, res) {
     if (req.cookies.teacher_ID != null) {
-        res.sendFile( __dirname + "/html/" + "attendance.html" );
+        res.sendFile( __dirname + "/html/" + "index.html" );
     } else {
         res.clearCookie("teacher_ID")
         .clearCookie("name")
