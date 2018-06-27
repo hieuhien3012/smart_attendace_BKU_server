@@ -242,14 +242,14 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
                 start   = date.getTime(),
                 end     = date.getTime(),
                 room    = results[0].room;
+            console.log(results)
             for (var i = 1; i < results.length; i++) {
                 var d = new Date(parseInt(results[i].time)),
                     r = results[i].room;
-                console.log(results)
                 if((d.getDay() == day) && (r == room) && ((d.getTime() - end) < 900000)){
                     end = parseInt(results[i].time)
                     console.log("true")
-                    if (results[i+1] == null,end - start > 1800000) {
+                    if (results[i+1] == null && end - start > 1800000) {
                         console.log("null")
                         var json = {
                             day     : day,
