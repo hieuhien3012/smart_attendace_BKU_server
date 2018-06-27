@@ -308,7 +308,6 @@ app.post('/appsignup',urlencodedParser,function(req,res){
 })
 
 app.post('/app',urlencodedParser, function (req, res) {
-    console.log(new Date(),req.body.student_ID)
     var data = req.body
     var date = new Date()
     var time = date.getTime()
@@ -317,6 +316,7 @@ app.post('/app',urlencodedParser, function (req, res) {
     var minor = parseInt(data.minor)
     var rssi = parseInt(data.rssi)
     var resTime = timeFormat(time)
+    console.log(resTime,student_ID,major,minor,rssi)
 
     var a = [
         [ time, student_ID , major, minor, rssi]
