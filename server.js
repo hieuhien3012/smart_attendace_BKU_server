@@ -248,8 +248,8 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
             res.end(JSON.stringify({
                 span : JSON.stringify(dateArray),
                 event: JSON.stringify(array),
-                id   : result[0].id,
-                name : result[0].name
+                id   : results[0].id,
+                name : results[0].name
             }))
         } else {
             res.end(JSON.stringify({
