@@ -246,11 +246,18 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
                 var d = new Date(parseInt(results[i].time)),
                     r = results[i].room;
                     console.log(d.getDay(),r,d.getTime(),end)
-                if((d.getDay() == day) && (r == room) && ((d.getTime() - end) < 900000)){
+                if((d.getDay() == day) && (r == room) && ((d.getTime() - end) < 900000) && results[i+1]!= null){
                     end = parseInt(results[i].time)
-                    console.log("true")
+                    if (results[i+1] == null,end - start > 1800000) {
+                        var json = {
+                            day     : day,
+                            start   : timeFormat(start),
+                            end     : timeFormat(end),
+                            room    : room,
+                        }
+                        array.push(json)
+                    }
                 } else {
-                    console.log("false")
                     if (end - start > 1800000) {
                         var json = {
                             day     : day,
