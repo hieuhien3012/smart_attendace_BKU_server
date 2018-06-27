@@ -18,40 +18,6 @@ var db = mysql.createConnection({
 app.use(express.static(__dirname + '/public'));
 app.use(cookieParser());
 
-app.post('/matday',urlencodedParser,function (req,res) {
-    var data = req.body,
-        id   = parseInt(data.id),
-        major= parseInt(data.major),
-        minor= parseInt(data.minor),
-        date  = parseInt(data.date),
-        h1   = parseInt(data.h1),
-        m1   = parseInt(data.m1),
-        h2   = parseInt(data.h2),
-        m2   = parseInt(data.m2),
-        h    = h1,
-        sql = "insert into Attendance values ?"
-
-    for (var m = m1; m < 66 ; m += 5) {
-        if( h==h2 && m>m2){
-            break
-        }
-        if(m>59){
-            m = m-60;
-            h++
-        }
-        var time = (new Date(2018,4,date,h,m)).getTime()
-        var rssi = getRandomInt(-90,-30),
-            values = [
-            [time,id,major,minor,rssi]
-        ]
-        console.log(values,h,m)
-        db.query(sql,[values],function (err,results) {
-            if (err) throw err;
-        })
-    }
-    res.end()
-})
-
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
@@ -208,9 +174,10 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
         start       =   parseInt(req.body.start),
         end         =   parseInt(req.body.end);
         room_ID     =   req.body.room;
-    var sql = "SELECT a.time AS time, r.room_ID AS room \
+    var sql = "SELECT a.time AS time, r.room_ID AS room, s.student_ID AS id, s.name AS name \
     FROM Attendance AS a\
     JOIN Rooms AS r ON (a.major = r.major AND a.minor = r.minor)\
+    JOIN Students AS s ON (a.student_ID = s.student_ID)\
     WHERE a.student_ID = ?\
     AND a.time > ?\
     AND a.time < ?",
@@ -280,12 +247,16 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
             // console.log(array)
             res.end(JSON.stringify({
                 span : JSON.stringify(dateArray),
-                event: JSON.stringify(array)
+                event: JSON.stringify(array),
+                id   : result[0].id,
+                name : result[0].name
             }))
         } else {
             res.end(JSON.stringify({
                 span : JSON.stringify(dateArray),
-                event: JSON.stringify(array)
+                event: JSON.stringify(array),
+                id   : result[0].id,
+                name : result[0].name
             }))
         }
     });
