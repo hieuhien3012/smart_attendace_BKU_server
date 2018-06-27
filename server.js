@@ -149,11 +149,12 @@ app.post('/getStudents',urlencodedParser,function (req,res) {
         where = "WHERE ST.teacher_ID = ?",
         room = " AND r.room_ID = ?",
         order = " ORDER BY student_ID",
-        values = [parseInt(req.body.teacher_ID)]
-        if(req.body.room_ID != "undefined"){
+        values = [parseInt(req.cookies.teacher_ID)]
+
+        if(req.cookies.room_ID != null){
             //console.log("!= null")
             sql = sql+join+where+room+order;
-            values.push(req.body.room_ID);
+            values.push(req.cookies.room_ID);
         } else {
             //console.log("== null")
             sql = sql+where+order;
