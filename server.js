@@ -145,7 +145,8 @@ app.post('/getStudents',urlencodedParser,function (req,res) {
         FROM Students_Teachers AS ST\
         JOIN Students AS s ON (ST.student_ID = s.student_ID) \
         JOIN Teachers AS t ON (ST.teacher_ID = t.teacher_ID)",
-        join = "JOIN Rooms AS r ON (r.teacher_ID = t.teacher_ID)"
+        join = "JOIN Rooms AS r ON (r.teacher_ID = t.teacher_ID)\
+                JOIN Students_Rooms AS SR ON (r.room_ID = SR.room_ID)"
         where = "WHERE ST.teacher_ID = ?",
         room = " AND r.room_ID = ?",
         order = " ORDER BY student_ID",
