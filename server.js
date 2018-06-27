@@ -146,7 +146,7 @@ app.post('/getStudents',urlencodedParser,function (req,res) {
         JOIN Students_Teachers AS ST ON (s.student_ID = ST.student_ID)",
         join = "JOIN Students_Rooms AS SR ON (s.student_ID = SR.student_ID)"
         where = " WHERE ST.teacher_ID = ?",
-        room = " AND r.room_ID = ?",
+        room = " AND SR.room_ID = ?",
         order = " ORDER BY student_ID",
         values = [parseInt(req.cookies.teacher_ID)]
 
