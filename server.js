@@ -44,10 +44,11 @@ app.post('/matday',urlencodedParser,function (req,res) {
             values = [
             [time,id,major,minor,rssi]
         ]
+        console.log(values,h,m)
         db.query(sql,[values],function (err,results) {
             if (err) throw err;
+            console.log("done")
         })
-        // console.log(values,h,m)
     }
     res.end()
 })
