@@ -242,6 +242,7 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
                 start   = date.getTime(),
                 end     = date.getTime(),
                 room    = results[0].room;
+                console.log(end)
             for (var i = 1; i < results.length; i++) {
                 var d = new Date(parseInt(results[i].time)),
                     r = results[i].room;

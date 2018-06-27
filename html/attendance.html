@@ -77,7 +77,7 @@
 
         function sendDate (d){
             var start = d-d.getMilliseconds()-(((d.getDay()*24+d.getHours())*60+d.getMinutes())*60+d.getSeconds())*1000
-            var end = d-d.getMilliseconds()-(((d.getHours()-((6-d.getDay())*24))*60+d.getMinutes())*60+d.getSeconds())*1000
+            var end = d-d.getMilliseconds()-(((d.getHours()-((7-d.getDay())*24))*60+d.getMinutes())*60+d.getSeconds())*1000
             $.ajax({
             url: '/getAttendance',
             type: 'POST',
