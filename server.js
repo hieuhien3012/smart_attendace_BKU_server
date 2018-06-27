@@ -32,12 +32,12 @@ app.post('/matday',urlencodedParser,function (req,res) {
         sql = "insert into Attendance values ?"
 
     for (var m = m1; m < 66 ; m += 5) {
+        if( h==h2 && m>m2){
+            break
+        }
         if(m>59){
             m = m-60;
             h++
-        }
-        if( h==h2 && m>m2){
-            break
         }
         var time = (new Date(2018,4,date,h,m)).getTime()
         var rssi = getRandomInt(-90,-30),
