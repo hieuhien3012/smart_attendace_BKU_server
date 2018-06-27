@@ -257,6 +257,7 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
                             end     : timeFormat(end),
                             room    : room,
                         }
+                        console.log(json)
                         array.push(json)
                     }
                 } else {
