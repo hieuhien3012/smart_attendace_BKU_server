@@ -77,7 +77,7 @@ app.get('/home', function (req, res) {
     var teacher_ID = req.cookies.teacher_ID
     //console.log("/home :"+teacher_ID)
     if (teacher_ID != null) {
-        res.sendFile( __dirname + "/html/" + "attendance.html" );
+        res.sendFile( __dirname + "/html/" + "index.html" );
     } else {
         res.clearCookie("teacher_ID")
         .clearCookie("name")
