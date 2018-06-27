@@ -174,10 +174,9 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
         start       =   parseInt(req.body.start),
         end         =   parseInt(req.body.end);
         room_ID     =   req.body.room;
-    var sql = "SELECT a.time AS time, r.room_ID AS room, s.student_ID AS id, s.name AS name \
+    var sql = "SELECT a.time AS time, r.room_ID AS room \
     FROM Attendance AS a\
     JOIN Rooms AS r ON (a.major = r.major AND a.minor = r.minor)\
-    JOIN Students AS s ON (a.student_ID = s.student_ID)\
     WHERE a.student_ID = ?\
     AND a.time > ?\
     AND a.time < ?",
@@ -247,21 +246,28 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
             // console.log(array)
             res.end(JSON.stringify({
                 span : JSON.stringify(dateArray),
-                event: JSON.stringify(array),
-                id   : results[0].id,
-                name : results[0].name
+                event: JSON.stringify(array)
             }))
         } else {
             res.end(JSON.stringify({
                 span : JSON.stringify(dateArray),
-                event: JSON.stringify(array),
-                id   : results[0].id,
-                name : results[0].name
+                event: JSON.stringify(array)
             }))
         }
     });
 })
 
+app.post('/getInfo',urlencodedParser,function (req,res){
+    var sql = "SELECT name FROM Students WHERE student_ID = ?",
+        student_ID = req.body.student_ID;
+    db.query(sql,[student_ID],function (err,results) {
+        if(err) throw err;
+        res.end({
+            id:student_ID,
+            name:results[0].name
+        })
+    })
+})
 //APP
 app.post('/applogin',urlencodedParser,function(req,res){
     var student_ID = req.body.username;
