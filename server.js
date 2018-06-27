@@ -44,7 +44,7 @@ app.post('/webLogin',urlencodedParser,function(req,res){
         if (results[0] != null ) {
             res.cookie("teacher_ID",teacher_ID)
             .cookie("name",results[0].name)
-            .sendFile( __dirname + "/html/" + "attendance.html" )
+            .sendFile( __dirname + "/html/" + "index.html" )
 
         } else {
             res.sendFile( __dirname + "/html/" + "login.html" );
