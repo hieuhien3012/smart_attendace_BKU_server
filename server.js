@@ -150,7 +150,7 @@ app.post('/getStudents',urlencodedParser,function (req,res) {
         order = " ORDER BY student_ID",
         values = [parseInt(req.cookies.teacher_ID)]
 
-        if(req.cookies.room_ID != null){
+        if(req.cookies.room_ID != "undefined"){
             //console.log("!= null")
             sql = sql+join+where+room+order;
             values.push(req.cookies.room_ID);
@@ -160,7 +160,6 @@ app.post('/getStudents',urlencodedParser,function (req,res) {
         }
         db.query(sql,values,function(err,results){
             if (err) throw err;
-            console.log(sql,values,results)
             array = []
             for (var i = 0; i < results.length; i++) {
                 array.push(results[i])
