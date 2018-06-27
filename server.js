@@ -245,10 +245,12 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
             for (var i = 1; i < results.length; i++) {
                 var d = new Date(parseInt(results[i].time)),
                     r = results[i].room;
-                    console.log(d.getDay(),r,d.getTime())
+                    console.log(d.getDay(),r,d.getTime(),end)
                 if((d.getDay() == day) && (r == room) && ((d.getTime() - end) < 900000)){
                     end = parseInt(results[i].time)
+                    console.log("true")
                 } else {
+                    console.log("false")
                     if (end - start > 1800000) {
                         var json = {
                             day     : day,
@@ -268,7 +270,6 @@ app.post('/getAttendance',urlencodedParser,function (req,res){
                 span : JSON.stringify(dateArray),
                 event: JSON.stringify(array)
             }))
-            console.log(array)
         } else {
             res.end(JSON.stringify({
                 span : JSON.stringify(dateArray),
