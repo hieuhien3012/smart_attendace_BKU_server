@@ -262,10 +262,10 @@ app.post('/getInfo',urlencodedParser,function (req,res){
         student_ID = req.body.student_ID;
     db.query(sql,[student_ID],function (err,results) {
         if(err) throw err;
-        res.end({
+        res.end(JSON.stringify({
             id:student_ID,
             name:results[0].name
-        })
+        }))
     })
 })
 //APP
