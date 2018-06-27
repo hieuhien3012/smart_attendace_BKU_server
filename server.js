@@ -143,11 +143,9 @@ app.post('/getStudents',urlencodedParser,function (req,res) {
     //console.log("/getStudents: ",req.body.teacher_ID,req.body.room_ID)
     var sql = "SELECT s.student_ID AS student_ID, s.name AS name \
         FROM Students AS s\
-        JOIN Students_Teachers AS ST ON (s.student_ID = ST.student_ID) \
-        JOIN Teachers AS t ON (ST.teacher_ID = t.teacher_ID)",
-        join = "JOIN Rooms AS r ON (r.teacher_ID = t.teacher_ID)\
-                JOIN Students_Rooms AS SR ON (r.room_ID = SR.room_ID)"
-        where = "WHERE ST.teacher_ID = ?",
+        JOIN Students_Teachers AS ST ON (s.student_ID = ST.student_ID)",
+        join = "JOIN Students_Rooms AS SR ON (s.student_ID = SR.student_ID)"
+        where = " WHERE ST.teacher_ID = ?",
         room = " AND r.room_ID = ?",
         order = " ORDER BY student_ID",
         values = [parseInt(req.cookies.teacher_ID)]
