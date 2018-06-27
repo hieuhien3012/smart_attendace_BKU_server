@@ -47,7 +47,6 @@ app.post('/matday',urlencodedParser,function (req,res) {
         console.log(values,h,m)
         db.query(sql,[values],function (err,results) {
             if (err) throw err;
-            console.log("done")
         })
     }
     res.end()
