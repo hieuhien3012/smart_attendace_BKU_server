@@ -288,6 +288,7 @@ Main Components
   display: block;
   color: rgb(0, 0, 0);
   font-weight: bold;
+  font-family: "Source Sans Pro", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
