@@ -162,7 +162,7 @@ app.post('/getStudents',urlencodedParser,function (req,res) {
         }
         db.query(sql,values,function(err,results){
             if (err) throw err;
-            //console.log(sql,values,results)
+            console.log(results)
             array = []
             for (var i = 0; i < results.length; i++) {
                 array.push(results[i])
